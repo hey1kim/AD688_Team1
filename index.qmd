@@ -1,0 +1,9 @@
+---
+title: "AI vs. Non-AI Careers"
+author: "Lutong Wen, Maria Taylor Gonzalez, Sebastian Schwarz, and Hye Won Kim"
+date: "2026-05-28"
+format:
+  html:
+    theme: journal
+    toc: true
+---
