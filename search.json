@@ -32,7 +32,7 @@
     "href": "data_analysis.html#data-cleaning-summary",
     "title": "Data Analysis",
     "section": "2 Data Cleaning Summary",
-    "text": "2 Data Cleaning Summary\nThe raw job postings data was reviewed and prepared for analysis by checking missing values, standardizing key fields, and preparing variables related to job titles, locations, salaries, and skills."
+    "text": "2 Data Cleaning Summary\nThe raw job postings data was reviewed and prepared for analysis by checking missing values, standardizing key fields, and preparing variables related to job titles, locations, salaries, and skills.\nThe impact of AI on job security has been widely discussed in recent years Smith and Zhao ((2023)).\nAI-driven job growth and salary trends are also important when comparing AI and non-AI career paths (Johnson and Patel (2024))."
   },
   {
     "objectID": "data_analysis.html#exploratory-data-analysis",

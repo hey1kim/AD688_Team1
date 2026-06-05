@@ -24,7 +24,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -140,6 +159,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#data-cleaning-summary" id="toc-data-cleaning-summary" class="nav-link" data-scroll-target="#data-cleaning-summary"><span class="header-section-number">2</span> Data Cleaning Summary</a></li>
   <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis"><span class="header-section-number">3</span> Exploratory Data Analysis</a></li>
   <li><a href="#key-insights" id="toc-key-insights" class="nav-link" data-scroll-target="#key-insights"><span class="header-section-number">4</span> Key Insights</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">5</span> References</a></li>
   </ul>
 </nav>
     </div>
@@ -186,6 +206,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="data-cleaning-summary" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="data-cleaning-summary"><span class="header-section-number">2</span> Data Cleaning Summary</h2>
 <p>The raw job postings data was reviewed and prepared for analysis by checking missing values, standardizing key fields, and preparing variables related to job titles, locations, salaries, and skills.</p>
+<p>The impact of AI on job security has been widely discussed in recent years <span class="citation" data-cites="smith2023ai">Smith and Zhao (<a href="#ref-smith2023ai" role="doc-biblioref">(2023)</a>)</span>.</p>
+<p>AI-driven job growth and salary trends are also important when comparing AI and non-AI career paths <span class="citation" data-cites="johnson2024salaries">(<a href="#ref-johnson2024salaries" role="doc-biblioref">Johnson and Patel (2024)</a>)</span>.</p>
 </section>
 <section id="exploratory-data-analysis" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="exploratory-data-analysis"><span class="header-section-number">3</span> Exploratory Data Analysis</h2>
@@ -194,11 +216,22 @@ ul.task-list li input[type="checkbox"] {
 <section id="key-insights" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="key-insights"><span class="header-section-number">4</span> Key Insights</h2>
 <p>Initial analysis suggests that job market demand varies across locations, industries, and skill categories. Further analysis will compare technical and business-oriented skills to identify important gaps for career planning.</p>
+</section>
+<section id="references" class="level2" data-number="5">
+
+
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">5 References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-johnson2024salaries" class="csl-entry" role="listitem">
+<span class="smallcaps">Johnson, E., and R. Patel</span>. (2024): <span>“<a href="https://doi.org/10.1016/j.esr.2024.03.002">Salary trends in AI and traditional engineering</a>,”</span> <em>Economics &amp; Statistics Review</em>, 49, 78–101.
+</div>
+<div id="ref-smith2023ai" class="csl-entry" role="listitem">
+<span class="smallcaps">Smith, J., and L. Zhao</span>. (2023): <span>“<a href="https://doi.org/10.1257/jep.37.2.112">The impact of AI on labor markets</a>,”</span> <em>Journal of Economic Perspectives</em>, 37, 112–35.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
