@@ -20,3 +20,6 @@ _site/
 
 /.quarto/
 **/*.quarto_ipynb
+
+cleaned_lightcast_jobs.csv
+
