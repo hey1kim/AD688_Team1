@@ -23,7 +23,3 @@ format:
   html:
     theme: cosmo
     toc: true
-execute:
-  echo: true
-  eval: true
-  code-fold: true

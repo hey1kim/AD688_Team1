@@ -1,0 +1,34 @@
+---
+title: "Data Analysis"
+subtitle: "Comprehensive Data Cleaning & Exploratory Analysis of Job Market Trends"
+author:
+  - name: Team 1
+    affiliations:
+      - id: bu
+        name: Boston University
+        city: Boston
+        state: MA
+bibliography: references.bib
+format: 
+  html:
+    toc: true
+    number-sections: true
+    df-print: paged
+---
+
+## Overview
+
+This page provides a comprehensive data analysis of 2024 job market trends, including data cleaning, exploratory analysis, salary trends, geographic patterns, and skill demand.
+
+## Data Cleaning Summary
+
+The raw job postings data was reviewed and prepared for analysis by checking missing values, standardizing key fields, and preparing variables related to job titles, locations, salaries, and skills.
+
+## Exploratory Data Analysis
+
+The exploratory analysis focuses on identifying major patterns in job postings, including the distribution of roles, salary trends, geographic variation, and frequently requested skills.
+
+## Key Insights
+
+Initial analysis suggests that job market demand varies across locations, industries, and skill categories. Further analysis will compare technical and business-oriented skills to identify important gaps for career planning.
+
