@@ -10,7 +10,7 @@ author:
         state: MA
 bibliography: references.bib
 csl: csl/econometrica.csl
-format: 
+format:
   html:
     toc: true
     number-sections: true
@@ -23,18 +23,26 @@ This page provides a comprehensive data analysis of 2024 job market trends, incl
 
 ## Data Cleaning Summary
 
-The raw job postings data was reviewed and prepared for analysis by checking missing values, standardizing key fields, and preparing variables related to job titles, locations, salaries, and skills.
+### 4.1 Dropping Unnecessary Columns
 
-The impact of AI on job security has been widely discussed in recent years @smith2023ai.
+**Which columns should be dropped, and why?**
 
-AI-driven job growth and salary trends are also important when comparing AI and non-AI career paths [@johnson2024salaries].
+The following columns were removed from the Lightcast dataset:
+
+- **ID, URL, ACTIVE_URLS, DUPLICATES, LAST_UPDATED_TIMESTAMP** — These are internal tracking and metadata columns that do not describe job characteristics and have no analytical value.
+- **NAICS2, NAICS3, NAICS4, NAICS5, NAICS6** — These are older and broader versions of industry classification codes. We keep only NAICS_2022_6, the most recent and detailed classification.
+- **SOC_2, SOC_3, SOC_5** — Redundant occupational classification codes. We retain only SOC_2021_4, which reflects the current federal standard.
+
+**How does this improve the analysis?**
+
+Removing these columns reduces dataset complexity, speeds up Spark queries, and ensures consistency by using only the most current industry and occupational classification standards throughout the analysis.
 
 ## Exploratory Data Analysis
 
-The exploratory analysis focuses on identifying major patterns in job postings, including the distribution of roles, salary trends, geographic variation, and frequently requested skills.
+The exploratory analysis focuses on identifying major patterns in job postings, including the distribution of roles, salary trends, geographic variation, and frequently required skills.
 
 ## Key Insights
 
-Initial analysis suggests that job market demand varies across locations, industries, and skill categories. Further analysis will compare technical and business-oriented skills to identify important gaps for career planning.
+Initial analysis suggests that job market demand varies across locations, industries, and skill categories. Further analysis will compare technical and business-oriented roles.
 
 ## References
