@@ -16,9 +16,7 @@ format:
     number-sections: true
     df-print: paged
 execute:
-  echo: true
-  warning: false
-  message: false
+  freeze: auto
 ---
 
 ## Exploratory Data Analysis
@@ -222,13 +220,16 @@ fig = px.bar(
 
 fig.update_layout(yaxis={"categoryorder": "total ascending"})
 fig.show()
+```
 
 **Key insight:** The most common skills in AI-related postings include SQL, Python, Data Analysis, Machine Learning, Artificial Intelligence, Data Science, Tableau, Statistics, Communication, Amazon Web Services, Microsoft Azure, Business Intelligence, Power BI, Data Visualization, and Data Modeling. This suggests that AI-related roles often require a mix of data, programming, cloud, visualization, and business communication skills. In other words, these jobs are not only about AI itself, but also about using data and technical tools in business settings.
 
 ## Summary
 
-This exploratory analysis looked at AI-related and non-AI careers in the 2024 Lightcast job postings dataset. Since the dataset does not already label whether a job is AI-related, I created a rule-based indicator using AI and machine learning terms found in the job title and skill fields. With this approach, the dataset includes 7,524 AI-related postings and 61,674 non-AI postings.
+This exploratory analysis looked at AI-related and non-AI careers in the 2024 Lightcast job postings dataset. Since the dataset does not already label whether a job is AI-related, a rule-based indicator was created using AI and machine learning terms found in the job title and skill fields. With this approach, the dataset includes 7,524 AI-related postings and 61,674 non-AI postings.
 
 The career area analysis shows that AI-related postings are much smaller in number than non-AI postings, but they still appear across several fields, including Information Technology and Computer Science, Business Management and Operations, Healthcare, and Marketing and Public Relations. The industry analysis shows that AI-related postings are concentrated in industries such as Professional, Scientific, and Technical Services, Finance and Insurance, Manufacturing, Information, Educational Services, Retail Trade, and Health Care and Social Assistance.
 
 The skills analysis shows that AI-related jobs often require a combination of technical and business-oriented skills, such as SQL, Python, Data Analysis, Machine Learning, Artificial Intelligence, Data Science, Tableau, AWS, Microsoft Azure, Business Intelligence, Power BI, Data Visualization, and Communication. Overall, the EDA suggests that AI-related career opportunities are connected not only to specialized AI roles, but also to broader data, technology, business, and service-related work.
+
+## References
