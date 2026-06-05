@@ -1,0 +1,234 @@
+---
+title: "Exploratory Data Analysis"
+subtitle: "AI vs. Non-AI Careers in 2024 Job Postings"
+author:
+  - name: Hye Won Kim
+    affiliations:
+      - id: bu
+        name: Boston University
+        city: Boston
+        state: MA
+bibliography: references.bib
+csl: csl/econometrica.csl
+format:
+  html:
+    toc: true
+    number-sections: true
+    df-print: paged
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Exploratory Data Analysis
+
+This section explores the 2024 Lightcast job postings dataset to compare AI-related and non-AI careers. Since our research topic focuses on **AI vs. Non-AI Careers**, the visualizations focus on career areas, industries, and skills associated with AI-related job postings.
+
+```{python}
+import pandas as pd
+import plotly.express as px
+import re
+
+use_cols = [
+    "TITLE_RAW",
+    "TITLE_NAME",
+    "TITLE_CLEAN",
+    "SKILLS_NAME",
+    "SPECIALIZED_SKILLS_NAME",
+    "COMMON_SKILLS_NAME",
+    "SOFTWARE_SKILLS_NAME",
+    "LOT_CAREER_AREA_NAME",
+    "LOT_OCCUPATION_NAME",
+    "NAICS_2022_2_NAME",
+    "REMOTE_TYPE_NAME"
+]
+
+df = pd.read_csv("cleaned_lightcast_jobs.csv", usecols=use_cols)
+
+df.shape
+```
+
+### Creating an AI-Related Job Indicator
+
+Before creating the visualizations, postings were classified into AI-related and non-AI categories. The cleaned dataset does not include a direct variable that identifies whether a posting is AI-related, so a rule-based indicator was created.
+
+To make this classification more data-driven, the job title and skill fields were reviewed before finalizing the keyword list. This review showed that broad search terms such as “AI,” “learning,” “language,” “vision,” and “model” captured many unrelated postings, including retail, claims, supply chain, learning management systems, speech language roles, supervision, provisioning, and data modeling. Therefore, these broad terms were not used by themselves.
+
+The final AI-related indicator uses more specific AI and machine learning terms observed in the dataset, including Artificial Intelligence, Generative Artificial Intelligence, AI/ML, ML/AI, Machine Learning, MLOps, Deep Learning, Reinforcement Learning, Artificial Neural Networks, Computer Vision, Large Language Model, LLM, Predictive Modeling, and Predictive Analytics.
+
+```{python}
+ai_keywords = [
+    "artificial intelligence",
+    "generative artificial intelligence",
+    "ai/ml",
+    "ml/ai",
+    "machine learning",
+    "machine learning algorithms",
+    "machine learning model training",
+    "machine learning data scientist",
+    "machine learning data engineer",
+    "mlops",
+    "deep learning",
+    "reinforcement learning",
+    "artificial neural networks",
+    "recurrent neural network",
+    "convolutional neural networks",
+    "computer vision",
+    "large language model",
+    " llm ",
+    "predictive modeling",
+    "predictive analytics"
+]
+
+text_cols = [
+    "TITLE_RAW",
+    "TITLE_NAME",
+    "TITLE_CLEAN",
+    "SKILLS_NAME",
+    "SPECIALIZED_SKILLS_NAME",
+    "COMMON_SKILLS_NAME",
+    "SOFTWARE_SKILLS_NAME"
+]
+
+combined_text = df[text_cols].fillna("").agg(" ".join, axis=1).str.lower()
+
+pattern = "|".join([re.escape(keyword) for keyword in ai_keywords])
+
+df["AI_RELATED"] = combined_text.str.contains(pattern, regex=True)
+df["Career Type"] = df["AI_RELATED"].map({True: "AI-Related", False: "Non-AI"})
+
+df["Career Type"].value_counts()
+```
+
+## AI-Related vs. Non-AI Job Postings by Career Area
+
+This visualization compares AI-related and non-AI postings across major career areas. It was chosen because our project asks how AI may affect different fields. By comparing career areas, we can identify where AI-related hiring demand is more visible and whether AI-related jobs are concentrated in technical fields or spread across broader business and professional areas.
+
+```{python}
+career_area_counts = (
+    df.groupby(["LOT_CAREER_AREA_NAME", "Career Type"])
+    .size()
+    .reset_index(name="Job Postings")
+)
+
+top_career_areas = (
+    df["LOT_CAREER_AREA_NAME"]
+    .dropna()
+    .value_counts()
+    .head(12)
+    .index
+)
+
+career_area_counts = career_area_counts[
+    career_area_counts["LOT_CAREER_AREA_NAME"].isin(top_career_areas)
+]
+
+fig = px.bar(
+    career_area_counts,
+    x="Job Postings",
+    y="LOT_CAREER_AREA_NAME",
+    color="Career Type",
+    barmode="group",
+    orientation="h",
+    title="AI-Related vs. Non-AI Job Postings by Career Area",
+    labels={
+        "LOT_CAREER_AREA_NAME": "Career Area",
+        "Job Postings": "Number of Job Postings"
+    }
+)
+
+fig.update_layout(yaxis={"categoryorder": "total ascending"})
+fig.show()
+```
+
+**Key insight:** The dataset includes 7,524 AI-related postings and 61,674 non-AI postings. This shows that non-AI postings still make up most of the job postings in the dataset. However, AI-related postings appear in several major career areas, especially Information Technology and Computer Science, Business Management and Operations, Healthcare, and Marketing and Public Relations. This suggests that AI-related demand is not limited to only technical jobs, even though it is still much smaller than non-AI demand overall.
+
+## AI-Related Job Postings by Industry
+
+This visualization shows the industries with the highest number of AI-related job postings. It was chosen because industry-level analysis helps identify where AI-related hiring demand is most concentrated. This connects directly to the research question about which industries are experiencing AI-driven job growth.
+
+```{python}
+ai_industry_counts = (
+    df[df["AI_RELATED"]]
+    ["NAICS_2022_2_NAME"]
+    .dropna()
+    .value_counts()
+    .head(15)
+    .reset_index()
+)
+
+ai_industry_counts.columns = ["Industry", "AI-Related Job Postings"]
+
+fig = px.bar(
+    ai_industry_counts,
+    x="AI-Related Job Postings",
+    y="Industry",
+    orientation="h",
+    title="Top Industries for AI-Related Job Postings"
+)
+
+fig.update_layout(yaxis={"categoryorder": "total ascending"})
+fig.show()
+```
+
+**Key insight:** AI-related postings are most common in Professional, Scientific, and Technical Services, Finance and Insurance, Manufacturing, Information, Educational Services, Retail Trade, and Health Care and Social Assistance. These results suggest that AI-related hiring is more visible in industries that rely heavily on technical, analytical, financial, and service-related work. This graph shows where AI-related job demand appears in the dataset, but it does not directly show whether AI is replacing jobs.
+
+## Top Skills Required in AI-Related Job Postings
+
+This visualization identifies the most frequently listed skills in AI-related job postings. It was chosen because skill demand helps explain how AI-related careers differ from broader non-AI roles. This also helps show what technical and business skills job seekers may need to prepare for AI-related career opportunities.
+
+ai_jobs = df[df["AI_RELATED"]].copy()
+
+skill_text = (
+    ai_jobs["SKILLS_NAME"].fillna("") + "," +
+    ai_jobs["SPECIALIZED_SKILLS_NAME"].fillna("") + "," +
+    ai_jobs["SOFTWARE_SKILLS_NAME"].fillna("")
+)
+
+skills = (
+    skill_text
+    .str.split(",")
+    .explode()
+    .str.strip()
+)
+
+# Clean formatting artifacts from list-like strings
+skills = (
+    skills
+    .str.replace(r'[\[\]\n]', '', regex=True)
+    .str.replace('"', '', regex=False)
+    .str.strip()
+)
+
+skills = skills[skills != ""]
+
+top_skills = (
+    skills
+    .value_counts()
+    .head(20)
+    .reset_index()
+)
+
+top_skills.columns = ["Skill", "Frequency"]
+
+fig = px.bar(
+    top_skills,
+    x="Frequency",
+    y="Skill",
+    orientation="h",
+    title="Top Skills Required in AI-Related Job Postings"
+)
+
+fig.update_layout(yaxis={"categoryorder": "total ascending"})
+fig.show()
+
+**Key insight:** The most common skills in AI-related postings include SQL, Python, Data Analysis, Machine Learning, Artificial Intelligence, Data Science, Tableau, Statistics, Communication, Amazon Web Services, Microsoft Azure, Business Intelligence, Power BI, Data Visualization, and Data Modeling. This suggests that AI-related roles often require a mix of data, programming, cloud, visualization, and business communication skills. In other words, these jobs are not only about AI itself, but also about using data and technical tools in business settings.
+
+## Summary
+
+This exploratory analysis looked at AI-related and non-AI careers in the 2024 Lightcast job postings dataset. Since the dataset does not already label whether a job is AI-related, I created a rule-based indicator using AI and machine learning terms found in the job title and skill fields. With this approach, the dataset includes 7,524 AI-related postings and 61,674 non-AI postings.
+
+The career area analysis shows that AI-related postings are much smaller in number than non-AI postings, but they still appear across several fields, including Information Technology and Computer Science, Business Management and Operations, Healthcare, and Marketing and Public Relations. The industry analysis shows that AI-related postings are concentrated in industries such as Professional, Scientific, and Technical Services, Finance and Insurance, Manufacturing, Information, Educational Services, Retail Trade, and Health Care and Social Assistance.
+
+The skills analysis shows that AI-related jobs often require a combination of technical and business-oriented skills, such as SQL, Python, Data Analysis, Machine Learning, Artificial Intelligence, Data Science, Tableau, AWS, Microsoft Azure, Business Intelligence, Power BI, Data Visualization, and Communication. Overall, the EDA suggests that AI-related career opportunities are connected not only to specialized AI roles, but also to broader data, technology, business, and service-related work.
