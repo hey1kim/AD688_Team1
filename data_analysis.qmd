@@ -23,7 +23,7 @@ This page provides a comprehensive data analysis of 2024 job market trends, incl
 
 ## Data Cleaning Summary
 
-### 4.1 Dropping Unnecessary Columns
+###  Dropping Unnecessary Columns
 
 **Which columns should be dropped, and why?**
 
