@@ -12,5 +12,40 @@
     "title": "About",
     "section": "",
     "text": "About this site"
+  },
+  {
+    "objectID": "data_analysis.html",
+    "href": "data_analysis.html",
+    "title": "Data Analysis",
+    "section": "",
+    "text": "This page provides a comprehensive data analysis of 2024 job market trends, including data cleaning, exploratory analysis, salary trends, geographic patterns, and skill demand."
+  },
+  {
+    "objectID": "data_analysis.html#overview",
+    "href": "data_analysis.html#overview",
+    "title": "Data Analysis",
+    "section": "",
+    "text": "This page provides a comprehensive data analysis of 2024 job market trends, including data cleaning, exploratory analysis, salary trends, geographic patterns, and skill demand."
+  },
+  {
+    "objectID": "data_analysis.html#data-cleaning-summary",
+    "href": "data_analysis.html#data-cleaning-summary",
+    "title": "Data Analysis",
+    "section": "2 Data Cleaning Summary",
+    "text": "2 Data Cleaning Summary\nThe raw job postings data was reviewed and prepared for analysis by checking missing values, standardizing key fields, and preparing variables related to job titles, locations, salaries, and skills."
+  },
+  {
+    "objectID": "data_analysis.html#exploratory-data-analysis",
+    "href": "data_analysis.html#exploratory-data-analysis",
+    "title": "Data Analysis",
+    "section": "3 Exploratory Data Analysis",
+    "text": "3 Exploratory Data Analysis\nThe exploratory analysis focuses on identifying major patterns in job postings, including the distribution of roles, salary trends, geographic variation, and frequently requested skills."
+  },
+  {
+    "objectID": "data_analysis.html#key-insights",
+    "href": "data_analysis.html#key-insights",
+    "title": "Data Analysis",
+    "section": "4 Key Insights",
+    "text": "4 Key Insights\nInitial analysis suggests that job market demand varies across locations, industries, and skill categories. Further analysis will compare technical and business-oriented skills to identify important gaps for career planning."
   }
 ]
