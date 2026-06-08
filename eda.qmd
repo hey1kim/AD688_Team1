@@ -176,6 +176,7 @@ fig.show()
 
 This visualization identifies the most frequently listed skills in AI-related job postings. It was chosen because skill demand helps explain how AI-related careers differ from broader non-AI roles. This also helps show what technical and business skills job seekers may need to prepare for AI-related career opportunities.
 
+```{python}
 ai_jobs = df[df["AI_RELATED"]].copy()
 
 skill_text = (
