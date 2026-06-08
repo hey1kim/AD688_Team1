@@ -21,45 +21,52 @@
     "text": "About this site"
   },
   {
-    "objectID": "data_analysis.html",
-    "href": "data_analysis.html",
-    "title": "Data Analysis",
+    "objectID": "eda.html",
+    "href": "eda.html",
+    "title": "Exploratory Data Analysis",
     "section": "",
-    "text": "This page provides a comprehensive data analysis of 2024 job market trends, including data cleaning, exploratory analysis, salary trends, geographic patterns, and skill demand."
+    "text": "This section explores the 2024 Lightcast job postings dataset to compare AI-related and non-AI careers. Since our research topic focuses on AI vs. Non-AI Careers, the visualizations focus on career areas, industries, and skills associated with AI-related job postings.\n\nimport pandas as pd\nimport plotly.express as px\nimport re\n\nuse_cols = [\n    \"TITLE_RAW\",\n    \"TITLE_NAME\",\n    \"TITLE_CLEAN\",\n    \"SKILLS_NAME\",\n    \"SPECIALIZED_SKILLS_NAME\",\n    \"COMMON_SKILLS_NAME\",\n    \"SOFTWARE_SKILLS_NAME\",\n    \"LOT_CAREER_AREA_NAME\",\n    \"LOT_OCCUPATION_NAME\",\n    \"NAICS_2022_2_NAME\",\n    \"REMOTE_TYPE_NAME\"\n]\n\ndf = pd.read_csv(\"cleaned_lightcast_jobs.csv\", usecols=use_cols)\n\ndf.shape\n\n(69198, 11)\n\n\n\n\nBefore creating the visualizations, postings were classified into AI-related and non-AI categories. The cleaned dataset does not include a direct variable that identifies whether a posting is AI-related, so a rule-based indicator was created.\nTo make this classification more data-driven, the job title and skill fields were reviewed before finalizing the keyword list. This review showed that broad search terms such as “AI,” “learning,” “language,” “vision,” and “model” captured many unrelated postings, including retail, claims, supply chain, learning management systems, speech language roles, supervision, provisioning, and data modeling. Therefore, these broad terms were not used by themselves.\nThe final AI-related indicator uses more specific AI and machine learning terms observed in the dataset, including Artificial Intelligence, Generative Artificial Intelligence, AI/ML, ML/AI, Machine Learning, MLOps, Deep Learning, Reinforcement Learning, Artificial Neural Networks, Computer Vision, Large Language Model, LLM, Predictive Modeling, and Predictive Analytics.\n\nai_keywords = [\n    \"artificial intelligence\",\n    \"generative artificial intelligence\",\n    \"ai/ml\",\n    \"ml/ai\",\n    \"machine learning\",\n    \"machine learning algorithms\",\n    \"machine learning model training\",\n    \"machine learning data scientist\",\n    \"machine learning data engineer\",\n    \"mlops\",\n    \"deep learning\",\n    \"reinforcement learning\",\n    \"artificial neural networks\",\n    \"recurrent neural network\",\n    \"convolutional neural networks\",\n    \"computer vision\",\n    \"large language model\",\n    \" llm \",\n    \"predictive modeling\",\n    \"predictive analytics\"\n]\n\ntext_cols = [\n    \"TITLE_RAW\",\n    \"TITLE_NAME\",\n    \"TITLE_CLEAN\",\n    \"SKILLS_NAME\",\n    \"SPECIALIZED_SKILLS_NAME\",\n    \"COMMON_SKILLS_NAME\",\n    \"SOFTWARE_SKILLS_NAME\"\n]\n\ncombined_text = df[text_cols].fillna(\"\").agg(\" \".join, axis=1).str.lower()\n\npattern = \"|\".join([re.escape(keyword) for keyword in ai_keywords])\n\ndf[\"AI_RELATED\"] = combined_text.str.contains(pattern, regex=True)\ndf[\"Career Type\"] = df[\"AI_RELATED\"].map({True: \"AI-Related\", False: \"Non-AI\"})\n\ndf[\"Career Type\"].value_counts()\n\nCareer Type\nNon-AI        61674\nAI-Related     7524\nName: count, dtype: int64"
   },
   {
-    "objectID": "data_analysis.html#overview",
-    "href": "data_analysis.html#overview",
-    "title": "Data Analysis",
+    "objectID": "eda.html#exploratory-data-analysis",
+    "href": "eda.html#exploratory-data-analysis",
+    "title": "Exploratory Data Analysis",
     "section": "",
-    "text": "This page provides a comprehensive data analysis of 2024 job market trends, including data cleaning, exploratory analysis, salary trends, geographic patterns, and skill demand."
+    "text": "This section explores the 2024 Lightcast job postings dataset to compare AI-related and non-AI careers. Since our research topic focuses on AI vs. Non-AI Careers, the visualizations focus on career areas, industries, and skills associated with AI-related job postings.\n\nimport pandas as pd\nimport plotly.express as px\nimport re\n\nuse_cols = [\n    \"TITLE_RAW\",\n    \"TITLE_NAME\",\n    \"TITLE_CLEAN\",\n    \"SKILLS_NAME\",\n    \"SPECIALIZED_SKILLS_NAME\",\n    \"COMMON_SKILLS_NAME\",\n    \"SOFTWARE_SKILLS_NAME\",\n    \"LOT_CAREER_AREA_NAME\",\n    \"LOT_OCCUPATION_NAME\",\n    \"NAICS_2022_2_NAME\",\n    \"REMOTE_TYPE_NAME\"\n]\n\ndf = pd.read_csv(\"cleaned_lightcast_jobs.csv\", usecols=use_cols)\n\ndf.shape\n\n(69198, 11)\n\n\n\n\nBefore creating the visualizations, postings were classified into AI-related and non-AI categories. The cleaned dataset does not include a direct variable that identifies whether a posting is AI-related, so a rule-based indicator was created.\nTo make this classification more data-driven, the job title and skill fields were reviewed before finalizing the keyword list. This review showed that broad search terms such as “AI,” “learning,” “language,” “vision,” and “model” captured many unrelated postings, including retail, claims, supply chain, learning management systems, speech language roles, supervision, provisioning, and data modeling. Therefore, these broad terms were not used by themselves.\nThe final AI-related indicator uses more specific AI and machine learning terms observed in the dataset, including Artificial Intelligence, Generative Artificial Intelligence, AI/ML, ML/AI, Machine Learning, MLOps, Deep Learning, Reinforcement Learning, Artificial Neural Networks, Computer Vision, Large Language Model, LLM, Predictive Modeling, and Predictive Analytics.\n\nai_keywords = [\n    \"artificial intelligence\",\n    \"generative artificial intelligence\",\n    \"ai/ml\",\n    \"ml/ai\",\n    \"machine learning\",\n    \"machine learning algorithms\",\n    \"machine learning model training\",\n    \"machine learning data scientist\",\n    \"machine learning data engineer\",\n    \"mlops\",\n    \"deep learning\",\n    \"reinforcement learning\",\n    \"artificial neural networks\",\n    \"recurrent neural network\",\n    \"convolutional neural networks\",\n    \"computer vision\",\n    \"large language model\",\n    \" llm \",\n    \"predictive modeling\",\n    \"predictive analytics\"\n]\n\ntext_cols = [\n    \"TITLE_RAW\",\n    \"TITLE_NAME\",\n    \"TITLE_CLEAN\",\n    \"SKILLS_NAME\",\n    \"SPECIALIZED_SKILLS_NAME\",\n    \"COMMON_SKILLS_NAME\",\n    \"SOFTWARE_SKILLS_NAME\"\n]\n\ncombined_text = df[text_cols].fillna(\"\").agg(\" \".join, axis=1).str.lower()\n\npattern = \"|\".join([re.escape(keyword) for keyword in ai_keywords])\n\ndf[\"AI_RELATED\"] = combined_text.str.contains(pattern, regex=True)\ndf[\"Career Type\"] = df[\"AI_RELATED\"].map({True: \"AI-Related\", False: \"Non-AI\"})\n\ndf[\"Career Type\"].value_counts()\n\nCareer Type\nNon-AI        61674\nAI-Related     7524\nName: count, dtype: int64"
   },
   {
-    "objectID": "data_analysis.html#data-cleaning-summary",
-    "href": "data_analysis.html#data-cleaning-summary",
-    "title": "Data Analysis",
-    "section": "2 Data Cleaning Summary",
-    "text": "2 Data Cleaning Summary\n\n2.1 Dropping Unnecessary Columns\nWhich columns should be dropped, and why?\nThe following columns were removed from the Lightcast dataset:\n\nID, URL, ACTIVE_URLS, DUPLICATES, LAST_UPDATED_TIMESTAMP — These are internal tracking and metadata columns that do not describe job characteristics and have no analytical value.\nNAICS2, NAICS3, NAICS4, NAICS5, NAICS6 — These are older and broader versions of industry classification codes. We keep only NAICS_2022_6, the most recent and detailed classification.\nSOC_2, SOC_3, SOC_5 — Redundant occupational classification codes. We retain only SOC_2021_4, which reflects the current federal standard.\n\nHow does this improve the analysis?\nRemoving these columns reduces dataset complexity, speeds up Spark queries, and ensures consistency by using only the most current industry and occupational classification standards throughout the analysis."
+    "objectID": "eda.html#ai-related-vs.-non-ai-job-postings-by-career-area",
+    "href": "eda.html#ai-related-vs.-non-ai-job-postings-by-career-area",
+    "title": "Exploratory Data Analysis",
+    "section": "0.2 AI-Related vs. Non-AI Job Postings by Career Area",
+    "text": "0.2 AI-Related vs. Non-AI Job Postings by Career Area\nThis visualization compares AI-related and non-AI postings across major career areas. It was chosen because our project asks how AI may affect different fields. By comparing career areas, we can identify where AI-related hiring demand is more visible and whether AI-related jobs are concentrated in technical fields or spread across broader business and professional areas.\n\ncareer_area_counts = (\n    df.groupby([\"LOT_CAREER_AREA_NAME\", \"Career Type\"])\n    .size()\n    .reset_index(name=\"Job Postings\")\n)\n\ntop_career_areas = (\n    df[\"LOT_CAREER_AREA_NAME\"]\n    .dropna()\n    .value_counts()\n    .head(12)\n    .index\n)\n\ncareer_area_counts = career_area_counts[\n    career_area_counts[\"LOT_CAREER_AREA_NAME\"].isin(top_career_areas)\n]\n\nfig = px.bar(\n    career_area_counts,\n    x=\"Job Postings\",\n    y=\"LOT_CAREER_AREA_NAME\",\n    color=\"Career Type\",\n    barmode=\"group\",\n    orientation=\"h\",\n    title=\"AI-Related vs. Non-AI Job Postings by Career Area\",\n    labels={\n        \"LOT_CAREER_AREA_NAME\": \"Career Area\",\n        \"Job Postings\": \"Number of Job Postings\"\n    }\n)\n\nfig.update_layout(yaxis={\"categoryorder\": \"total ascending\"})\nfig.show()\n\n                            \n                                            \n\n\nKey insight: The dataset includes 7,524 AI-related postings and 61,674 non-AI postings. This shows that non-AI postings still make up most of the job postings in the dataset. However, AI-related postings appear in several major career areas, especially Information Technology and Computer Science, Business Management and Operations, Healthcare, and Marketing and Public Relations. This suggests that AI-related demand is not limited to only technical jobs, even though it is still much smaller than non-AI demand overall."
   },
   {
-    "objectID": "data_analysis.html#exploratory-data-analysis",
-    "href": "data_analysis.html#exploratory-data-analysis",
-    "title": "Data Analysis",
-    "section": "3 Exploratory Data Analysis",
-    "text": "3 Exploratory Data Analysis\nThe exploratory analysis focuses on identifying major patterns in job postings, including the distribution of roles, salary trends, geographic variation, and frequently required skills."
+    "objectID": "eda.html#ai-related-job-postings-by-industry",
+    "href": "eda.html#ai-related-job-postings-by-industry",
+    "title": "Exploratory Data Analysis",
+    "section": "0.3 AI-Related Job Postings by Industry",
+    "text": "0.3 AI-Related Job Postings by Industry\nThis visualization shows the industries with the highest number of AI-related job postings. It was chosen because industry-level analysis helps identify where AI-related hiring demand is most concentrated. This connects directly to the research question about which industries are experiencing AI-driven job growth.\n\nai_industry_counts = (\n    df[df[\"AI_RELATED\"]]\n    [\"NAICS_2022_2_NAME\"]\n    .dropna()\n    .value_counts()\n    .head(15)\n    .reset_index()\n)\n\nai_industry_counts.columns = [\"Industry\", \"AI-Related Job Postings\"]\n\nfig = px.bar(\n    ai_industry_counts,\n    x=\"AI-Related Job Postings\",\n    y=\"Industry\",\n    orientation=\"h\",\n    title=\"Top Industries for AI-Related Job Postings\"\n)\n\nfig.update_layout(yaxis={\"categoryorder\": \"total ascending\"})\nfig.show()\n\n                            \n                                            \n\n\nKey insight: AI-related postings are most common in Professional, Scientific, and Technical Services, Finance and Insurance, Manufacturing, Information, Educational Services, Retail Trade, and Health Care and Social Assistance. These results suggest that AI-related hiring is more visible in industries that rely heavily on technical, analytical, financial, and service-related work. This graph shows where AI-related job demand appears in the dataset, but it does not directly show whether AI is replacing jobs."
   },
   {
-    "objectID": "data_analysis.html#key-insights",
-    "href": "data_analysis.html#key-insights",
-    "title": "Data Analysis",
-    "section": "4 Key Insights",
-    "text": "4 Key Insights\nInitial analysis suggests that job market demand varies across locations, industries, and skill categories. Further analysis will compare technical and business-oriented roles."
+    "objectID": "eda.html#top-skills-required-in-ai-related-job-postings",
+    "href": "eda.html#top-skills-required-in-ai-related-job-postings",
+    "title": "Exploratory Data Analysis",
+    "section": "0.4 Top Skills Required in AI-Related Job Postings",
+    "text": "0.4 Top Skills Required in AI-Related Job Postings\nThis visualization identifies the most frequently listed skills in AI-related job postings. It was chosen because skill demand helps explain how AI-related careers differ from broader non-AI roles. This also helps show what technical and business skills job seekers may need to prepare for AI-related career opportunities.\nai_jobs = df[df[“AI_RELATED”]].copy()\nskill_text = ( ai_jobs[“SKILLS_NAME”].fillna(““) +”,” + ai_jobs[“SPECIALIZED_SKILLS_NAME”].fillna(““) +”,” + ai_jobs[“SOFTWARE_SKILLS_NAME”].fillna(““) )\nskills = ( skill_text .str.split(“,”) .explode() .str.strip() )"
   },
   {
-    "objectID": "data_analysis.html#references",
-    "href": "data_analysis.html#references",
-    "title": "Data Analysis",
-    "section": "5 References",
-    "text": "5 References"
+    "objectID": "eda.html#summary",
+    "href": "eda.html#summary",
+    "title": "Exploratory Data Analysis",
+    "section": "1.1 Summary",
+    "text": "1.1 Summary\nThis exploratory analysis looked at AI-related and non-AI careers in the 2024 Lightcast job postings dataset. Since the dataset does not already label whether a job is AI-related, a rule-based indicator was created using AI and machine learning terms found in the job title and skill fields. With this approach, the dataset includes 7,524 AI-related postings and 61,674 non-AI postings.\nThe career area analysis shows that AI-related postings are much smaller in number than non-AI postings, but they still appear across several fields, including Information Technology and Computer Science, Business Management and Operations, Healthcare, and Marketing and Public Relations. The industry analysis shows that AI-related postings are concentrated in industries such as Professional, Scientific, and Technical Services, Finance and Insurance, Manufacturing, Information, Educational Services, Retail Trade, and Health Care and Social Assistance.\nThe skills analysis shows that AI-related jobs often require a combination of technical and business-oriented skills, such as SQL, Python, Data Analysis, Machine Learning, Artificial Intelligence, Data Science, Tableau, AWS, Microsoft Azure, Business Intelligence, Power BI, Data Visualization, and Communication. Overall, the EDA suggests that AI-related career opportunities are connected not only to specialized AI roles, but also to broader data, technology, business, and service-related work."
+  },
+  {
+    "objectID": "eda.html#references",
+    "href": "eda.html#references",
+    "title": "Exploratory Data Analysis",
+    "section": "1.2 References",
+    "text": "1.2 References"
   }
 ]
