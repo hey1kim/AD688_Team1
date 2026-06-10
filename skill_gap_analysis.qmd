@@ -1,0 +1,110 @@
+---
+title: "Skill Gap Analysis"
+author: "Team 1"
+date: "2026-06-09"
+format:
+  html:
+    toc: true
+execute:
+  echo: false
+  eval: false
+---
+
+# Skill Gap Analysis
+
+## Objective
+
+This page compares the skills required in AI-related job postings with the current skills of our team members. The goal is to identify gaps between market demand and our current preparation.
+
+Our group project focuses on **AI vs. Non-AI Careers**. Therefore, this section focuses on skills that are commonly connected to AI-related job postings, including Python, SQL, machine learning, artificial intelligence, data analysis, data visualization, cloud platforms, and communication.
+
+## Skill Level Scale
+
+We use a 1-5 scale to measure each team member's current skill level.
+
+| Score | Level | Meaning |
+|---:|---|---|
+| 1 | Beginner | Limited exposure and needs guided practice |
+| 2 | Basic knowledge | Understands basic concepts and simple tasks |
+| 3 | Intermediate | Can complete common tasks with some independence |
+| 4 | Advanced | Can apply the skill to complex projects |
+| 5 | Expert | Can lead others and solve advanced problems |
+
+## Team Skill Matrix
+
+The table below records current team skill levels for skills that are relevant to AI-related and data-focused careers.
+
+| Team Member | Career Path | Python | SQL | Machine Learning | Artificial Intelligence | Data Analysis | Data Visualization | AWS | Azure | Communication |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Lutong Wen | AI / Data Analyst | 3 | 3 | 2 | 2 | 3 | 3 | 1 | 1 | 4 |
+| Maria Taylor Gonzalez | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| Sebastian Schwarz | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| Hye Won Kim | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+
+At this stage, not every team member has submitted their final self-assessment. The TBD values should be updated after each member provides their 1-5 skill rating.
+
+## Market Skill Demand
+
+Based on the EDA section, AI-related job postings emphasize both technical and communication-oriented skills. These skills are important because AI-related careers often require candidates to collect data, clean data, analyze information, build models, communicate insights, and use cloud-based tools.
+
+| Skill | Market Required Level | Why It Matters |
+|---|---:|---|
+| Python | 5 | Frequently used in data analysis, automation, and machine learning |
+| SQL | 5 | Important for querying, cleaning, and managing structured data |
+| Machine Learning | 4 | Core technical skill for many AI-related careers |
+| Artificial Intelligence | 4 | Directly related to AI job growth and emerging AI roles |
+| Data Analysis | 5 | Common requirement across AI, analytics, and business roles |
+| Data Visualization | 3 | Helps communicate trends and findings clearly |
+| AWS | 3 | Cloud platform used for data storage and AI deployment |
+| Azure | 3 | Cloud platform used for data and AI services |
+| Communication | 4 | Needed to explain technical results to non-technical audiences |
+
+The market required level is a project-based ranking from 1 to 5. It does not mean employers directly gave these scores. Instead, the ranking summarizes how important each skill appears to be based on our EDA findings and the focus of AI-related job postings.
+
+## Preliminary Skill Gap
+
+The skill gap is calculated as:
+
+**Skill Gap = Market Required Level - Current Confirmed Team Level**
+
+Because the full team has not submitted all ratings yet, this preliminary table uses the currently confirmed skill ratings.
+
+| Skill | Market Required Level | Current Confirmed Level | Gap | Priority |
+|---|---:|---:|---:|---|
+| Python | 5 | 3 | 2 | High |
+| SQL | 5 | 3 | 2 | High |
+| Machine Learning | 4 | 2 | 2 | High |
+| Artificial Intelligence | 4 | 2 | 2 | High |
+| Data Analysis | 5 | 3 | 2 | High |
+| Data Visualization | 3 | 3 | 0 | Low |
+| AWS | 3 | 1 | 2 | High |
+| Azure | 3 | 1 | 2 | High |
+| Communication | 4 | 4 | 0 | Low |
+
+## Interpretation
+
+The preliminary results show that the largest skill gaps are in Python, SQL, machine learning, artificial intelligence, data analysis, AWS, and Azure. These areas are important because AI-related careers often require both technical programming skills and the ability to work with data systems.
+
+Python and SQL are high-priority skills because they are foundational for many AI, analytics, and data-related roles. Machine learning and artificial intelligence are also high priorities because they are directly connected to AI career growth. Cloud skills such as AWS and Azure are important because many AI and data projects are deployed or managed through cloud platforms.
+
+Communication appears to be a relative strength in the preliminary assessment. This is still important because AI and data professionals must explain technical results clearly to managers, clients, and non-technical stakeholders.
+
+## Improvement Plan
+
+| Priority Area | Why It Matters | Suggested Action | Timeline |
+|---|---|---|---|
+| Python and SQL | Foundational skills for AI, analytics, and data-related roles | Practice data cleaning, joins, aggregation, and analysis projects | 2-3 weeks |
+| Machine Learning and AI | Directly connected to AI-related job growth | Complete introductory machine learning exercises and build one model-based project | 3-4 weeks |
+| Data Visualization | Helps communicate job market trends clearly | Build dashboards using Plotly, Tableau, or Power BI | 2-3 weeks |
+| Cloud Computing | Used for data storage, model deployment, and AI applications | Complete beginner AWS or Azure learning modules | 4-6 weeks |
+| Communication and Storytelling | Needed to explain technical results to business stakeholders | Practice short written summaries and team presentations | Ongoing |
+
+## Team Collaboration Strategy
+
+To reduce skill gaps, the team can divide learning responsibilities based on current strengths. Members who are more comfortable with Python or SQL can support coding and data cleaning tasks. Members who are stronger in writing, presentation, or business interpretation can help improve the final website narrative and explain technical findings clearly.
+
+The team should update this page after all members submit their ratings. Once the full team skill matrix is complete, the skill gap comparison will provide a more accurate view of team strengths, weaknesses, and career development priorities.
+
+## Summary
+
+This skill gap analysis shows that AI-related career preparation requires both technical and communication skills. The most important areas for improvement are the skills where market demand is high but the current team level is lower. Based on the preliminary analysis, the team should prioritize Python, SQL, machine learning, artificial intelligence, cloud computing, and applied data analysis.
