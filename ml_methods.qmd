@@ -49,19 +49,30 @@ print(f"Dataset shape: {df.shape}")
 Following the same methodology established in the Data Cleaning section, jobs are classified as AI-related using keyword matching on title and skill fields.
 
 ```{python}
-ai_keywords = [
-    "ai", "artificial intelligence", "machine learning",
-    "deep learning", "data scientist", "generative ai", "llm",
-    "mlops", "reinforcement learning", "computer vision",
-    "large language model", "predictive modeling"
+import re
+
+ai_keywords_exact = [
+    r"\bai\b", r"\bllm\b", r"\bmlops\b", r"\bnlp\b",
+    r"\bml engineer\b", r"\btensorflow\b", r"\bpytorch\b"
+]
+ai_keywords_partial = [
+    "artificial intelligence", "machine learning", "deep learning",
+    "data scientist", "generative ai", "reinforcement learning",
+    "computer vision", "large language model", "predictive modeling",
+    "natural language processing", "neural network", "data science",
+    "data engineer", "data analyst", "statistical modeling",
+    "predictive analytics", "business intelligence"
 ]
 
-df["AI_JOB"] = (
-    df["TITLE_RAW"]
-    .fillna("")
-    .str.lower()
-    .apply(lambda x: any(kw in x for kw in ai_keywords))
-).astype(int)
+def is_ai(title):
+    t = str(title).lower()
+    for kw in ai_keywords_exact:
+        if re.search(kw, t): return True
+    for kw in ai_keywords_partial:
+        if kw in t: return True
+    return False
+
+df["AI_JOB"] = df["TITLE_RAW"].fillna("").apply(is_ai).astype(int)
 
 ai_counts = df["AI_JOB"].value_counts().reset_index()
 ai_counts.columns = ["AI Job", "Count"]
