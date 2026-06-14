@@ -1,0 +1,72 @@
+---
+title: "Project Overview"
+subtitle: "AI vs. Non-AI Careers: A Data-Driven Analysis"
+date: "2026-05-28"
+format:
+  html:
+    theme: cosmo
+    toc: true
+---
+
+## About This Project
+
+This project analyzes the 2024 U.S. job market to understand how artificial intelligence is reshaping career opportunities across industries. Using the **Lightcast 2024 dataset** — over 72,000 real job postings — our team applies data science, machine learning, and visualization techniques to explore the divide between AI-driven and traditional careers.
+
+## Research Question
+
+> **How does AI impact job security, salary, and career growth across industries in 2024?**
+
+Specifically, we investigate:
+
+- Which industries are experiencing AI-driven **job growth** vs. **job displacement**?
+- How do **salaries** compare between AI and non-AI careers?
+- What **skills** differentiate AI roles from traditional ones?
+- Are new job titles **emerging** due to AI advancements?
+
+## Dataset
+
+| | |
+|---|---|
+| **Source** | Lightcast 2024 Job Postings |
+| **Records** | 72,498 job postings |
+| **After cleaning** | 51,316 records |
+| **Coverage** | United States, all industries |
+| **Key fields** | Salary, ONET codes, skills, education, remote type, industry (NAICS) |
+
+The dataset was cleaned and preprocessed to remove duplicates, impute missing salaries, and standardize classification codes. Full details are in the [Data Preparation](data_cleaning.qmd) section.
+
+## Team
+
+This project was developed by a team of 4 students from Boston University's AD 688 Web Analytics course:
+
+- Lutong Wen
+- Maria Taylor Gonzalez
+- Sebastian Schwarz
+- Hye Won Kim
+
+## Site Structure
+
+| Section | Description |
+|---|---|
+| [Home](index.qmd) | Research rationale and literature review |
+| [Data Preparation](data_cleaning.qmd) | Cleaning, preprocessing, and feature engineering |
+| [Exploratory Analysis](eda.qmd) | Salary distributions, industry trends, and job posting patterns |
+| [Skill Gap Analysis](skill_gap_analysis.qmd) | In-demand skills vs. available talent |
+| [Predictive Modeling](ml_methods.qmd) | KMeans clustering and AI/non-AI classification models |
+| [Career Strategy](career_plan.qmd) | Personal career action plans based on findings |
+
+## Methodology
+
+1. **Data Cleaning** — Remove redundant classification levels, impute missing salaries, filter outliers
+2. **EDA** — Visualize salary distributions, employment trends, and industry patterns
+3. **Skill Gap Analysis** — Compare required skills vs. market availability
+4. **ML Methods** — KMeans clustering to group job types; Logistic Regression and Random Forest to classify AI vs. non-AI roles
+5. **Career Strategy** — Translate findings into actionable career recommendations
+
+## References
+
+- Bick, A. et al. (2024). The Rapid Adoption of Generative AI. *Federal Reserve Bank of St. Louis Working Paper.*
+- Hassan, S. & Anwer, N. (2024). AI Exposure and Workplace Stress. *Journal of Occupational Psychology.*
+- Balakumar, P. et al. (2024). AI Replacement Risk by Occupation. *Labor Economics Review.*
+- Singh, R. (2025). Net Job Impact of AI by 2030. *World Economic Forum Futures Report.*
+- Onteddu, V. et al. (2024). AI in Agriculture: Smart Irrigation Systems. *Journal of Agricultural Technology.*
