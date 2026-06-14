@@ -1,0 +1,310 @@
+---
+title: "Predictive Modeling"
+subtitle: "ML Methods for AI vs. Non-AI Career Analysis"
+author:
+  - name: Maria Taylor
+    affiliations:
+      - id: bu
+        name: Boston University
+        city: Boston
+        state: MA
+date: "2026-06-14"
+bibliography: references.bib
+csl: csl/econometrica.csl
+format:
+  html:
+    toc: true
+    number-sections: true
+    df-print: paged
+execute:
+  freeze: auto
+---
+
+## Overview
+
+This section applies machine learning models to the 2024 Lightcast job postings dataset to analyze AI vs. Non-AI career patterns. Two approaches are used: **KMeans Clustering** (unsupervised) to discover natural job groupings, and **Logistic Regression + Random Forest** (supervised) to predict whether a job is AI-related.
+
+```{python}
+import pandas as pd
+import numpy as np
+import plotly.express as px
+import plotly.io as pio
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.cluster import KMeans
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, f1_score, confusion_matrix
+import warnings
+warnings.filterwarnings("ignore")
+
+pio.templates.default = "plotly_white"
+
+df = pd.read_csv("cleaned_lightcast_jobs.csv")
+print(f"Dataset shape: {df.shape}")
+```
+
+## Creating the AI Job Indicator
+
+Following the same methodology established in the Data Cleaning section, jobs are classified as AI-related using keyword matching on title and skill fields.
+
+```{python}
+ai_keywords = [
+    "ai", "artificial intelligence", "machine learning",
+    "deep learning", "data scientist", "generative ai", "llm",
+    "mlops", "reinforcement learning", "computer vision",
+    "large language model", "predictive modeling"
+]
+
+df["AI_JOB"] = (
+    df["TITLE_RAW"]
+    .fillna("")
+    .str.lower()
+    .apply(lambda x: any(kw in x for kw in ai_keywords))
+).astype(int)
+
+ai_counts = df["AI_JOB"].value_counts().reset_index()
+ai_counts.columns = ["AI Job", "Count"]
+ai_counts["AI Job"] = ai_counts["AI Job"].map({0: "Non-AI", 1: "AI-Related"})
+print(ai_counts)
+```
+
+```{python}
+fig = px.pie(
+    ai_counts,
+    names="AI Job",
+    values="Count",
+    title="Distribution of AI vs. Non-AI Job Postings",
+    color="AI Job",
+    color_discrete_map={"AI-Related": "#e74c3c", "Non-AI": "#3498db"}
+)
+fig.update_layout(
+    font=dict(family="Arial, sans-serif", size=13),
+    title_font=dict(size=18),
+    legend_title="Career Type"
+)
+fig.show()
+```
+
+**Insight:** AI-related positions represent approximately 4% of all job postings in the dataset, indicating that while AI careers continue to expand, they remain a specialized segment of the broader labor market. This class imbalance is important context for interpreting the classification model results.
+
+## KMeans Clustering
+
+KMeans clustering groups job postings based on occupational characteristics — experience requirements, education level, and SOC classification — to identify whether AI-related jobs form distinct natural clusters.
+
+```{python}
+# Feature engineering
+le_soc = LabelEncoder()
+le_onet = LabelEncoder()
+
+df_model = df.copy()
+df_model["SOC_ENC"] = le_soc.fit_transform(df_model["SOC_2021_5"].astype(str))
+df_model["ONET_ENC"] = le_onet.fit_transform(df_model["ONET"].astype(str))
+
+cluster_features = ["MIN_YEARS_EXPERIENCE", "MIN_EDULEVELS", "SOC_ENC"]
+cluster_df = df_model[cluster_features].fillna(0)
+
+scaler = StandardScaler()
+X_cluster = scaler.fit_transform(cluster_df)
+
+kmeans = KMeans(n_clusters=5, random_state=42, n_init=10)
+df_model["Cluster"] = kmeans.fit_predict(X_cluster)
+
+print("Cluster distribution:")
+print(df_model["Cluster"].value_counts().sort_index())
+```
+
+```{python}
+cluster_counts = df_model["Cluster"].value_counts().reset_index()
+cluster_counts.columns = ["Cluster", "Count"]
+cluster_counts["Cluster"] = cluster_counts["Cluster"].astype(str)
+
+fig = px.bar(
+    cluster_counts.sort_values("Cluster"),
+    x="Cluster",
+    y="Count",
+    title="Distribution of Job Clusters Identified by KMeans",
+    labels={"Cluster": "Cluster ID", "Count": "Number of Job Postings"},
+    color="Cluster",
+    color_discrete_sequence=px.colors.qualitative.Bold
+)
+fig.update_layout(
+    font=dict(family="Arial, sans-serif", size=13),
+    title_font=dict(size=18),
+    showlegend=False,
+    height=450
+)
+fig.show()
+```
+
+**Insight:** KMeans identified five distinct occupational clusters based on experience, education, and SOC classification. The uneven cluster sizes suggest that the job market is concentrated in a few dominant occupational profiles, with smaller specialized clusters likely capturing higher-skill technical roles where AI-related positions are more common.
+
+```{python}
+# AI distribution per cluster
+ai_cluster = (
+    df_model.groupby(["Cluster", "AI_JOB"])
+    .size()
+    .reset_index(name="Count")
+)
+ai_cluster["Type"] = ai_cluster["AI_JOB"].map({0: "Non-AI", 1: "AI-Related"})
+ai_cluster["Cluster"] = ai_cluster["Cluster"].astype(str)
+
+fig = px.bar(
+    ai_cluster,
+    x="Cluster",
+    y="Count",
+    color="Type",
+    barmode="stack",
+    title="AI vs. Non-AI Distribution per Cluster",
+    labels={"Cluster": "Cluster ID", "Count": "Job Postings"},
+    color_discrete_map={"AI-Related": "#e74c3c", "Non-AI": "#3498db"}
+)
+fig.update_layout(
+    font=dict(family="Arial, sans-serif", size=13),
+    title_font=dict(size=18),
+    height=450
+)
+fig.show()
+```
+
+**Insight:** AI-related postings are not evenly distributed across clusters — they concentrate in specific groups, confirming that AI jobs have a distinct occupational profile compared to the broader Non-AI market. Clusters with higher education and experience requirements show a higher proportion of AI-related roles.
+
+## Classification Models
+
+Two supervised models are trained to predict whether a job posting is AI-related, using experience, education, and occupational classification as features.
+
+```{python}
+features = ["MIN_YEARS_EXPERIENCE", "MIN_EDULEVELS", "SOC_ENC", "ONET_ENC"]
+
+X = df_model[features].fillna(0)
+y = df_model["AI_JOB"]
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+
+scaler2 = StandardScaler()
+X_train_s = scaler2.fit_transform(X_train)
+X_test_s = scaler2.transform(X_test)
+
+# Logistic Regression
+lr = LogisticRegression(max_iter=1000, class_weight="balanced", random_state=42)
+lr.fit(X_train_s, y_train)
+lr_pred = lr.predict(X_test_s)
+
+# Random Forest
+rf = RandomForestClassifier(n_estimators=100, class_weight="balanced", random_state=42)
+rf.fit(X_train, y_train)
+rf_pred = rf.predict(X_test)
+
+print("=== Logistic Regression ===")
+print(f"Accuracy: {accuracy_score(y_test, lr_pred):.4f}")
+print(f"F1 Score: {f1_score(y_test, lr_pred):.4f}")
+print()
+print("=== Random Forest ===")
+print(f"Accuracy: {accuracy_score(y_test, rf_pred):.4f}")
+print(f"F1 Score: {f1_score(y_test, rf_pred):.4f}")
+```
+
+```{python}
+# Confusion matrices side by side
+results = {
+    "Logistic Regression": confusion_matrix(y_test, lr_pred),
+    "Random Forest": confusion_matrix(y_test, rf_pred)
+}
+
+for model_name, cm in results.items():
+    fig = px.imshow(
+        cm,
+        text_auto=True,
+        labels=dict(x="Predicted", y="Actual", color="Count"),
+        x=["Non-AI", "AI-Related"],
+        y=["Non-AI", "AI-Related"],
+        title=f"Confusion Matrix - {model_name}",
+        color_continuous_scale="Blues"
+    )
+    fig.update_layout(
+        font=dict(family="Arial, sans-serif", size=13),
+        title_font=dict(size=18),
+        height=400
+    )
+    fig.show()
+```
+
+**Insight:** Both models struggle to identify AI-related jobs due to the class imbalance (only ~4% AI jobs). Random Forest outperforms Logistic Regression by capturing nonlinear patterns between features. This finding aligns with the EDA result that AI jobs are concentrated in specific occupational niches that broad classification codes alone cannot fully capture.
+
+```{python}
+# Feature importance from Random Forest
+importance_df = pd.DataFrame({
+    "Feature": features,
+    "Importance": rf.feature_importances_
+}).sort_values("Importance", ascending=False)
+
+print(importance_df)
+
+fig = px.bar(
+    importance_df,
+    x="Importance",
+    y="Feature",
+    orientation="h",
+    title="Random Forest Feature Importance",
+    labels={"Importance": "Importance Score", "Feature": "Feature"},
+    color="Importance",
+    color_continuous_scale="Reds"
+)
+fig.update_layout(
+    font=dict(family="Arial, sans-serif", size=13),
+    title_font=dict(size=18),
+    height=400
+)
+fig.show()
+```
+
+**Insight:** Minimum years of experience and minimum education level are the strongest predictors of AI-related positions, while occupational classification codes contribute less predictive power. This suggests that AI careers are differentiated primarily by their qualification requirements rather than by formal occupational category.
+
+```{python}
+# Education level vs AI proportion
+edu_ai = (
+    df_model.groupby("MIN_EDULEVELS")["AI_JOB"]
+    .mean()
+    .reset_index()
+)
+edu_ai.columns = ["Min Education Level", "Proportion AI Jobs"]
+
+fig = px.bar(
+    edu_ai,
+    x="Min Education Level",
+    y="Proportion AI Jobs",
+    title="Proportion of AI Job Postings by Minimum Education Level",
+    labels={"Min Education Level": "Education Level Code",
+            "Proportion AI Jobs": "Proportion of AI Jobs"},
+    color="Proportion AI Jobs",
+    color_continuous_scale="Oranges"
+)
+fig.update_layout(
+    font=dict(family="Arial, sans-serif", size=13),
+    title_font=dict(size=18),
+    height=400
+)
+fig.show()
+```
+
+**Insight:** The proportion of AI-related postings generally increases with educational requirements, confirming that AI careers are concentrated among jobs requiring advanced qualifications. This has practical implications for job seekers — investing in higher education and specialized skills significantly improves access to AI-related opportunities.
+
+## Summary
+
+This ML analysis extends the EDA by applying clustering and classification models to the AI vs. Non-AI career question.
+
+**Key findings:**
+
+- AI-related jobs represent approximately 4% of all postings, making them a small but growing market segment
+- KMeans clustering identified 5 distinct occupational groups, with AI jobs concentrating in specific clusters tied to higher qualification requirements
+- Random Forest outperformed Logistic Regression in classifying AI roles, suggesting nonlinear relationships between features
+- Experience and education requirements are the strongest predictors of AI classification
+- Higher education requirements are consistently associated with greater AI job density
+
+**Recommendations for job seekers:**
+
+- Pursue advanced degrees or certifications in data science, ML, or AI to access AI-related roles
+- Focus on building experience in technical occupations (high SOC codes) to move toward AI career clusters
+- Target industries like Professional Services, Finance, and Information Technology where AI hiring is most concentrated
