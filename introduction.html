@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-05-28">
 
-<title>About – Job Market Analysis 2024</title>
+<title>Project Overview – Job Market Analysis 2024</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -96,7 +97,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./introduction.html"> 
+    <a class="nav-link active" href="./introduction.html" aria-current="page"> 
 <span class="menu-text">Project Overview</span></a>
   </li>  
   <li class="nav-item">
@@ -130,15 +131,28 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#about-this-project" id="toc-about-this-project" class="nav-link active" data-scroll-target="#about-this-project">About This Project</a></li>
+  <li><a href="#research-question" id="toc-research-question" class="nav-link" data-scroll-target="#research-question">Research Question</a></li>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset">Dataset</a></li>
+  <li><a href="#team" id="toc-team" class="nav-link" data-scroll-target="#team">Team</a></li>
+  <li><a href="#site-structure" id="toc-site-structure" class="nav-link" data-scroll-target="#site-structure">Site Structure</a></li>
+  <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About</h1>
+<h1 class="title">Project Overview</h1>
+<p class="subtitle lead">AI vs.&nbsp;Non-AI Careers: A Data-Driven Analysis</p>
 </div>
 
 
@@ -146,6 +160,12 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 28, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -155,9 +175,124 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>About this site</p>
+<section id="about-this-project" class="level2">
+<h2 class="anchored" data-anchor-id="about-this-project">About This Project</h2>
+<p>This project analyzes the 2024 U.S. job market to understand how artificial intelligence is reshaping career opportunities across industries. Using the <strong>Lightcast 2024 dataset</strong> — over 72,000 real job postings — our team applies data science, machine learning, and visualization techniques to explore the divide between AI-driven and traditional careers.</p>
+</section>
+<section id="research-question" class="level2">
+<h2 class="anchored" data-anchor-id="research-question">Research Question</h2>
+<blockquote class="blockquote">
+<p><strong>How does AI impact job security, salary, and career growth across industries in 2024?</strong></p>
+</blockquote>
+<p>Specifically, we investigate:</p>
+<ul>
+<li>Which industries are experiencing AI-driven <strong>job growth</strong> vs.&nbsp;<strong>job displacement</strong>?</li>
+<li>How do <strong>salaries</strong> compare between AI and non-AI careers?</li>
+<li>What <strong>skills</strong> differentiate AI roles from traditional ones?</li>
+<li>Are new job titles <strong>emerging</strong> due to AI advancements?</li>
+</ul>
+</section>
+<section id="dataset" class="level2">
+<h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Source</strong></td>
+<td>Lightcast 2024 Job Postings</td>
+</tr>
+<tr class="even">
+<td><strong>Records</strong></td>
+<td>72,498 job postings</td>
+</tr>
+<tr class="odd">
+<td><strong>After cleaning</strong></td>
+<td>51,316 records</td>
+</tr>
+<tr class="even">
+<td><strong>Coverage</strong></td>
+<td>United States, all industries</td>
+</tr>
+<tr class="odd">
+<td><strong>Key fields</strong></td>
+<td>Salary, ONET codes, skills, education, remote type, industry (NAICS)</td>
+</tr>
+</tbody>
+</table>
+<p>The dataset was cleaned and preprocessed to remove duplicates, impute missing salaries, and standardize classification codes. Full details are in the <a href="data_cleaning.qmd">Data Preparation</a> section.</p>
+</section>
+<section id="team" class="level2">
+<h2 class="anchored" data-anchor-id="team">Team</h2>
+<p>This project was developed by a team of 4 students from Boston University’s AD 688 Web Analytics course:</p>
+<ul>
+<li>Lutong Wen</li>
+<li>Maria Taylor Gonzalez</li>
+<li>Sebastian Schwarz</li>
+<li>Hye Won Kim</li>
+</ul>
+</section>
+<section id="site-structure" class="level2">
+<h2 class="anchored" data-anchor-id="site-structure">Site Structure</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Section</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="./index.html">Home</a></td>
+<td>Research rationale and literature review</td>
+</tr>
+<tr class="even">
+<td><a href="data_cleaning.qmd">Data Preparation</a></td>
+<td>Cleaning, preprocessing, and feature engineering</td>
+</tr>
+<tr class="odd">
+<td><a href="./eda.html">Exploratory Analysis</a></td>
+<td>Salary distributions, industry trends, and job posting patterns</td>
+</tr>
+<tr class="even">
+<td><a href="skill_gap_analysis.qmd">Skill Gap Analysis</a></td>
+<td>In-demand skills vs.&nbsp;available talent</td>
+</tr>
+<tr class="odd">
+<td><a href="./ml_methods.html">Predictive Modeling</a></td>
+<td>KMeans clustering and AI/non-AI classification models</td>
+</tr>
+<tr class="even">
+<td><a href="career_plan.qmd">Career Strategy</a></td>
+<td>Personal career action plans based on findings</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="methodology" class="level2">
+<h2 class="anchored" data-anchor-id="methodology">Methodology</h2>
+<ol type="1">
+<li><strong>Data Cleaning</strong> — Remove redundant classification levels, impute missing salaries, filter outliers</li>
+<li><strong>EDA</strong> — Visualize salary distributions, employment trends, and industry patterns</li>
+<li><strong>Skill Gap Analysis</strong> — Compare required skills vs.&nbsp;market availability</li>
+<li><strong>ML Methods</strong> — KMeans clustering to group job types; Logistic Regression and Random Forest to classify AI vs.&nbsp;non-AI roles</li>
+<li><strong>Career Strategy</strong> — Translate findings into actionable career recommendations</li>
+</ol>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>Bick, A. et al.&nbsp;(2024). The Rapid Adoption of Generative AI. <em>Federal Reserve Bank of St.&nbsp;Louis Working Paper.</em></li>
+<li>Hassan, S. &amp; Anwer, N. (2024). AI Exposure and Workplace Stress. <em>Journal of Occupational Psychology.</em></li>
+<li>Balakumar, P. et al.&nbsp;(2024). AI Replacement Risk by Occupation. <em>Labor Economics Review.</em></li>
+<li>Singh, R. (2025). Net Job Impact of AI by 2030. <em>World Economic Forum Futures Report.</em></li>
+<li>Onteddu, V. et al.&nbsp;(2024). AI in Agriculture: Smart Irrigation Systems. <em>Journal of Agricultural Technology.</em></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
