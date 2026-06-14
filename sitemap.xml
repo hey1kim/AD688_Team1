@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://hey1kim.github.io/AD688_Team1/index.html</loc>
-    <lastmod>2026-06-12T02:16:29.223Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hey1kim.github.io/AD688_Team1/data_cleaning.html</loc>
-    <lastmod>2026-06-12T02:16:29.223Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hey1kim.github.io/AD688_Team1/eda.html</loc>
-    <lastmod>2026-06-12T02:16:29.223Z</lastmod>
+    <loc>https://hey1kim.github.io/AD688_Team1/ml_methods.html</loc>
+    <lastmod>2026-06-14T20:11:00.373Z</lastmod>
   </url>
   <url>
     <loc>https://hey1kim.github.io/AD688_Team1/about.html</loc>
-    <lastmod>2026-06-12T02:16:29.210Z</lastmod>
+    <lastmod>2026-06-14T20:11:00.360Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hey1kim.github.io/AD688_Team1/eda.html</loc>
+    <lastmod>2026-06-14T20:11:00.372Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hey1kim.github.io/AD688_Team1/data_cleaning.html</loc>
+    <lastmod>2026-06-14T20:11:00.372Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hey1kim.github.io/AD688_Team1/index.html</loc>
+    <lastmod>2026-06-14T20:11:00.372Z</lastmod>
   </url>
 </urlset>
