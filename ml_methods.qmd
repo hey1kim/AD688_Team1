@@ -308,14 +308,15 @@ This ML analysis extends the EDA by applying clustering and classification model
 
 **Key findings:**
 
-- AI-related jobs represent approximately 4% of all postings, making them a small but growing market segment
-- KMeans clustering identified 5 distinct occupational groups, with AI jobs concentrating in specific clusters tied to higher qualification requirements
-- Random Forest outperformed Logistic Regression in classifying AI roles, suggesting nonlinear relationships between features
-- Experience and education requirements are the strongest predictors of AI classification
+- AI-related jobs represent approximately 28% of all postings when including data science, analytics, business intelligence, and AI-adjacent roles — confirming that AI has broadly permeated the labor market
+- KMeans clustering identified 5 occupational groups; AI jobs concentrate in specific clusters tied to higher experience and education requirements
+- Both models achieved F1 scores of ~0.50, with Random Forest slightly outperforming Logistic Regression by capturing nonlinear patterns
+- Experience (importance: 0.73) and education (importance: 0.27) are the dominant predictors of AI job classification
 - Higher education requirements are consistently associated with greater AI job density
 
 **Recommendations for job seekers:**
 
 - Pursue advanced degrees or certifications in data science, ML, or AI to access AI-related roles
-- Focus on building experience in technical occupations (high SOC codes) to move toward AI career clusters
+- Build experience in technical occupations — years of experience is the single strongest predictor of AI job access
 - Target industries like Professional Services, Finance, and Information Technology where AI hiring is most concentrated
+- Develop skills in business intelligence and analytics as entry points into the broader AI job market
