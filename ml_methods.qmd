@@ -242,7 +242,7 @@ for model_name, cm in results.items():
     fig.show()
 ```
 
-**Insight:** Both models struggle to identify AI-related jobs due to the class imbalance (only ~4% AI jobs). Random Forest outperforms Logistic Regression by capturing nonlinear patterns between features. This finding aligns with the EDA result that AI jobs are concentrated in specific occupational niches that broad classification codes alone cannot fully capture.
+**Insight:** With a more balanced dataset (~28% AI jobs), both models show meaningful predictive power with F1 scores around 0.50. Random Forest slightly outperforms Logistic Regression, suggesting nonlinear relationships between experience, education, and AI job classification. The remaining error reflects overlap between AI-adjacent and traditional roles that share similar qualification profiles.
 
 ```{python}
 # Feature importance from Random Forest
