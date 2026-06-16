@@ -97,7 +97,7 @@ fig.update_layout(
 fig.show()
 ```
 
-**Insight:** AI-related positions represent approximately 4% of all job postings in the dataset, indicating that while AI careers continue to expand, they remain a specialized segment of the broader labor market. This class imbalance is important context for interpreting the classification model results.
+**Insight:** AI-related positions represent approximately 28% of all job postings in the dataset, capturing data science, analytics, business intelligence, and machine learning roles. This broader definition reflects the true scope of AI-adjacent careers in the 2024 labor market.
 
 ## KMeans Clustering
 
