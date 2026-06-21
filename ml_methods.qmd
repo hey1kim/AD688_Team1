@@ -45,7 +45,7 @@ from sklearn.metrics import accuracy_score, f1_score, confusion_matrix
 
 pio.templates.default = "plotly_white"
 
-spark = SparkSession.builder.appName("MLMethods").getOrCreate()
+spark = SparkSession.builder.appName("MLMethods").config("spark.ui.showConsoleProgress", "false").getOrCreate()
 spark.sparkContext.setLogLevel("ERROR")
 
 sdf = (spark.read
@@ -213,7 +213,8 @@ fig = px.bar(
     title="Distribution of Job Clusters Identified by KMeans",
     labels={"Cluster": "Cluster ID", "count": "Number of Job Postings"},
     color="Cluster",
-    color_discrete_sequence=px.colors.qualitative.Bold
+    color_discrete_sequence=px.colors.qualitative.Bold,
+    category_orders={"Cluster": ["0", "1", "2"]}
 )
 fig.update_layout(
     font=dict(family="Arial, sans-serif", size=13),
@@ -239,7 +240,8 @@ fig = px.bar(
     barmode="stack",
     title="AI vs. Non-AI Distribution per Cluster",
     labels={"Cluster": "Cluster ID", "count": "Job Postings"},
-    color_discrete_map={"AI-Related": "#e74c3c", "Non-AI": "#3498db"}
+    color_discrete_map={"AI-Related": "#e74c3c", "Non-AI": "#3498db"},
+    category_orders={"Cluster": ["0", "1", "2"]}
 )
 fig.update_layout(
     font=dict(family="Arial, sans-serif", size=13),
@@ -299,8 +301,8 @@ ai_visibility = [False]*n_cluster_traces + [True]*n_ai_traces
 
 fig.update_layout(
     title="PCA Visualization — Colored by Cluster",
-    xaxis_title="Principal Component 1",
-    yaxis_title="Principal Component 2",
+    xaxis_title="Overall Seniority Score (Experience + Education)",
+    yaxis_title="Education-Experience Balance",
     font=dict(family="Arial, sans-serif", size=13),
     title_font=dict(size=18),
     height=520,
