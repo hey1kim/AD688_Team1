@@ -324,7 +324,7 @@ fig.update_layout(
 fig.show()
 ```
 
-**Insight:** The 2D PCA projection shows reasonably distinct groupings between clusters, confirming that the KMeans solution captures real structure in the data rather than arbitrary partitions. Switching the view to AI Job Status shows that AI-related postings are dispersed throughout the lower-experience region of the projection rather than forming their own isolated cluster — consistent with AI skills appearing across many traditional job categories rather than as a separate occupational class.
+**Insight:** The 2D PCA projection shows reasonably distinct groupings between clusters, confirming that the KMeans solution captures real structure in the data rather than arbitrary partitions. The grid-like point pattern reflects the discrete nature of experience and education values — relatively few unique combinations exist in the labor market, so many postings share identical coordinates. Switching the view to AI Job Status shows that AI-related postings are dispersed throughout the lower-experience region of the projection rather than forming their own isolated cluster — consistent with AI skills appearing across many traditional job categories rather than as a separate occupational class.
 
 ## Classification Models
 
