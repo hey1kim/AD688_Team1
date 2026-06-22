@@ -31,32 +31,30 @@ The predictive modeling results further support this career strategy. The cluste
 
 ## Recommendations for Job Seekers
 
-### 1. Build AI-adjacent skills, not only AI-specialist skills
+### Build AI-adjacent skills, not only AI-specialist skills
 
 Job seekers should develop skills that connect AI to practical business use cases. The EDA and skill gap analysis show strong demand for SQL, Python, data analysis, machine learning, artificial intelligence, Tableau, AWS, Microsoft Azure, Power BI, data visualization, and communication. These skills are useful not only for AI engineer roles, but also for business analyst, data analyst, product analyst, operations analyst, and strategy roles that increasingly use AI-supported tools.
 
-### 2. Target industries where AI hiring is already visible
+### Target industries where AI hiring is already visible
 
 AI-related hiring appears more concentrated in Professional, Scientific, and Technical Services, Finance and Insurance, Manufacturing, Information, Educational Services, Retail Trade, and Health Care and Social Assistance. Job seekers interested in AI-related roles should prioritize these industries because they show stronger evidence of AI-related demand in the dataset. This does not mean other industries are irrelevant, but these sectors may offer more accessible entry points for AI-adjacent career development.
 
-### 3. Use early-career experience strategically
+### Use early-career experience strategically
 
 The predictive modeling results suggest that AI-related roles are more common in lower-experience clusters. This is important for students and early-to-mid career professionals because it means AI-related opportunities may be accessible before reaching senior-level experience. Job seekers should focus on internships, class projects, portfolio projects, certifications, and applied analytics work that demonstrate practical experience with AI, machine learning, and data tools.
 
-### 4. Avoid roles that rely only on repetitive tasks
+### Avoid roles that rely only on repetitive tasks
 
 The literature review suggests that repetitive and highly automatable roles face greater risk from AI displacement. Therefore, job seekers should avoid positioning themselves only around routine data entry, basic reporting, or task execution. Instead, they should build skills in problem-solving, interpretation, stakeholder communication, and decision support. These abilities are harder to automate and make technical skills more valuable.
 
-### 5. Combine technical skills with domain knowledge
+### Combine technical skills with domain knowledge
 
 AI-related jobs are spread across multiple industries, which means domain knowledge still matters. For example, AI in finance, healthcare, manufacturing, education, and retail may require different business problems, regulations, data types, and stakeholder needs. Job seekers can stand out by combining technical skills with industry-specific knowledge rather than presenting themselves as general AI users only.
 
-### 6. Create evidence of applied ability
+### Create evidence of applied ability
 
 Because the modeling results suggest that experience is a stronger signal than education level alone, job seekers should create concrete evidence of their skills. This can include GitHub projects, dashboards, machine learning notebooks, cloud-based analytics projects, or case studies. A strong portfolio can help show that the candidate can apply AI and data tools to real problems, not just list the tools on a resume.
 
 ## Conclusion
 
 Overall, our findings suggest that the strongest career strategy is to become AI-adjacent, data-capable, and industry-aware. AI-related jobs are still a smaller portion of the overall job market, but they are visible across many industries and career areas. Job seekers who combine technical skills, business communication, and applied project experience will be better positioned for both AI-specific and non-AI roles as the labor market continues to change.
-
-## References
