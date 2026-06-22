@@ -104,6 +104,8 @@ df["Career Type"].value_counts()
 This visualization compares AI-related and non-AI postings across major career areas. It was chosen because our project asks how AI may affect different fields. By comparing career areas, we can identify where AI-related hiring demand is more visible and whether AI-related jobs are concentrated in technical fields or spread across broader business and professional areas.
 
 ```{python}
+import textwrap
+
 career_area_counts = (
     df.groupby(["LOT_CAREER_AREA_NAME", "Career Type"])
     .size()
@@ -120,23 +122,46 @@ top_career_areas = (
 
 career_area_counts = career_area_counts[
     career_area_counts["LOT_CAREER_AREA_NAME"].isin(top_career_areas)
-]
+].copy()
+
+# Wrap long career area labels so the plot area has more horizontal space
+career_area_counts["Career Area"] = career_area_counts["LOT_CAREER_AREA_NAME"].apply(
+    lambda x: "<br>".join(textwrap.wrap(str(x), width=28))
+)
 
 fig = px.bar(
     career_area_counts,
     x="Job Postings",
-    y="LOT_CAREER_AREA_NAME",
+    y="Career Area",
     color="Career Type",
     barmode="group",
     orientation="h",
     title="AI-Related vs. Non-AI Job Postings by Career Area",
     labels={
-        "LOT_CAREER_AREA_NAME": "Career Area",
+        "Career Area": "Career Area",
         "Job Postings": "Number of Job Postings"
     }
 )
 
-fig.update_layout(yaxis={"categoryorder": "total ascending"})
+fig.update_layout(
+    width=1050,
+    height=700,
+    margin=dict(l=170, r=90, t=80, b=60),
+    yaxis=dict(
+        categoryorder="total ascending",
+        automargin=True,
+        tickfont=dict(size=12)
+    ),
+    xaxis=dict(
+        title="Number of Job Postings"
+    ),
+    legend=dict(
+        title="Career Type",
+        x=1.02,
+        y=1
+    )
+)
+
 fig.show()
 ```
 
@@ -147,6 +172,8 @@ fig.show()
 This visualization shows the industries with the highest number of AI-related job postings. It was chosen because industry-level analysis helps identify where AI-related hiring demand is most concentrated. This connects directly to the research question about which industries are experiencing AI-driven job growth.
 
 ```{python}
+import textwrap
+
 ai_industry_counts = (
     df[df["AI_RELATED"]]
     ["NAICS_2022_2_NAME"]
@@ -158,15 +185,37 @@ ai_industry_counts = (
 
 ai_industry_counts.columns = ["Industry", "AI-Related Job Postings"]
 
+# Wrap long industry labels so the plot area has more horizontal space
+ai_industry_counts["Industry Wrapped"] = ai_industry_counts["Industry"].apply(
+    lambda x: "<br>".join(textwrap.wrap(str(x), width=32))
+)
+
 fig = px.bar(
     ai_industry_counts,
     x="AI-Related Job Postings",
-    y="Industry",
+    y="Industry Wrapped",
     orientation="h",
-    title="Top Industries for AI-Related Job Postings"
+    title="Top Industries for AI-Related Job Postings",
+    labels={
+        "Industry Wrapped": "Industry",
+        "AI-Related Job Postings": "AI-Related Job Postings"
+    }
 )
 
-fig.update_layout(yaxis={"categoryorder": "total ascending"})
+fig.update_layout(
+    width=1050,
+    height=750,
+    margin=dict(l=190, r=80, t=80, b=60),
+    yaxis=dict(
+        categoryorder="total ascending",
+        automargin=True,
+        tickfont=dict(size=12)
+    ),
+    xaxis=dict(
+        title="AI-Related Job Postings"
+    )
+)
+
 fig.show()
 ```
 
