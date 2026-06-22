@@ -8,6 +8,7 @@ author:
         name: Boston University
         city: Boston
         state: MA
+date: "2026-06-05"
 bibliography: references.bib
 csl: csl/econometrica.csl
 format:
