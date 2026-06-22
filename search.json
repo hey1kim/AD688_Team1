@@ -221,7 +221,7 @@
     "href": "skill_gap_analysis.html#career-strategy",
     "title": "Skill Gap Analysis",
     "section": "Career Strategy",
-    "text": "Career Strategy\nFor career preparation, the main priority should be strengthening Python, SQL, machine learning, and cloud skills. Tableau and Power BI should also remain important because AI-related roles still need clear business reporting and visualization.\nA practical next step is to build small portfolio projects that combine job market data, machine learning, and dashboard reporting. This connects directly to the type of work shown in our project."
+    "text": "Career Strategy\nFor career preparation, the main priority should be strengthening Python, SQL, machine learning, and cloud skills. Tableau and Power BI should also remain important because AI-related roles still need clear business reporting and visualization.\nA practical next step is to build small portfolio projects that combine job market data, machine learning, and dashboard reporting. This connects directly to the type of work shown in our project. ## Next Steps\n\n\n\n\n\n\n\n\nArea\nCurrent Gap\nAction\n\n\n\n\nMachine Learning\nLimited confidence with model building and interpretation\nPractice classification, regression, and clustering projects\n\n\nCloud Tools\nAWS and Azure skills are still developing\nContinue AWS labs and learn basic cloud deployment\n\n\nVisualization\nBasic dashboard skills are developing\nBuild more Tableau or Power BI dashboards using job market data\n\n\nCommunication\nStronger area\nUse this strength to explain technical results clearly to business audiences"
   },
   {
     "objectID": "career_plan.html",
