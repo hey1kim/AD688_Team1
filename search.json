@@ -119,6 +119,41 @@
     "text": "References\n\nBick, A. et al. (2024). The Rapid Adoption of Generative AI. Federal Reserve Bank of St. Louis Working Paper.\nHassan, S. & Anwer, N. (2024). AI Exposure and Workplace Stress. Journal of Occupational Psychology.\nBalakumar, P. et al. (2024). AI Replacement Risk by Occupation. Labor Economics Review.\nSingh, R. (2025). Net Job Impact of AI by 2030. World Economic Forum Futures Report.\nOnteddu, V. et al. (2024). AI in Agriculture: Smart Irrigation Systems. Journal of Agricultural Technology."
   },
   {
+    "objectID": "skill_gap_analysis.html",
+    "href": "skill_gap_analysis.html",
+    "title": "Skill Gap Analysis",
+    "section": "",
+    "text": "This section compares the skills required in AI-related job postings with our current skill profile.\n\n\nBased on our Lightcast job posting analysis, the most common skills in AI-related postings include SQL, Python, Data Analysis, Machine Learning, Artificial Intelligence, Data Science, Tableau, Statistics, Communication, AWS, Azure, Business Intelligence, Power BI, Data Visualization, and Data Modeling.\nThis shows that AI-related careers are not only about AI models. They also require data handling, programming, cloud tools, visualization, and communication.\n\n\n\n\n\n\nSkill\nLutong\n\n\n\n\nPython\n3\n\n\nSQL\n3\n\n\nMachine Learning\n2\n\n\nAI\n2\n\n\nData Analysis\n3\n\n\nData Visualization\n3\n\n\nAWS\n1\n\n\nAzure\n1\n\n\nCommunication\n4\n\n\n\n\n\n\nThe largest gaps are in cloud platforms and machine learning. AWS and Azure appear in AI-related job postings, but my current confidence with these tools is still limited. Machine learning and AI are also important because they directly connect to the project topic.\nMy stronger areas are communication, data analysis, SQL, Python, and data visualization. These skills provide a foundation for business analytics roles, but I still need more practice with machine learning workflows and cloud-based tools.\n\n\n\nFor career preparation, the main priority should be strengthening Python, SQL, machine learning, and cloud skills. Tableau and Power BI should also remain important because AI-related roles still need clear business reporting and visualization.\nA practical next step is to build small portfolio projects that combine job market data, machine learning, and dashboard reporting. This connects directly to the type of work shown in our project."
+  },
+  {
+    "objectID": "skill_gap_analysis.html#market-skill-demand",
+    "href": "skill_gap_analysis.html#market-skill-demand",
+    "title": "Skill Gap Analysis",
+    "section": "",
+    "text": "Based on our Lightcast job posting analysis, the most common skills in AI-related postings include SQL, Python, Data Analysis, Machine Learning, Artificial Intelligence, Data Science, Tableau, Statistics, Communication, AWS, Azure, Business Intelligence, Power BI, Data Visualization, and Data Modeling.\nThis shows that AI-related careers are not only about AI models. They also require data handling, programming, cloud tools, visualization, and communication."
+  },
+  {
+    "objectID": "skill_gap_analysis.html#current-skill-profile",
+    "href": "skill_gap_analysis.html#current-skill-profile",
+    "title": "Skill Gap Analysis",
+    "section": "",
+    "text": "Skill\nLutong\n\n\n\n\nPython\n3\n\n\nSQL\n3\n\n\nMachine Learning\n2\n\n\nAI\n2\n\n\nData Analysis\n3\n\n\nData Visualization\n3\n\n\nAWS\n1\n\n\nAzure\n1\n\n\nCommunication\n4"
+  },
+  {
+    "objectID": "skill_gap_analysis.html#skill-gap-interpretation",
+    "href": "skill_gap_analysis.html#skill-gap-interpretation",
+    "title": "Skill Gap Analysis",
+    "section": "",
+    "text": "The largest gaps are in cloud platforms and machine learning. AWS and Azure appear in AI-related job postings, but my current confidence with these tools is still limited. Machine learning and AI are also important because they directly connect to the project topic.\nMy stronger areas are communication, data analysis, SQL, Python, and data visualization. These skills provide a foundation for business analytics roles, but I still need more practice with machine learning workflows and cloud-based tools."
+  },
+  {
+    "objectID": "skill_gap_analysis.html#career-strategy",
+    "href": "skill_gap_analysis.html#career-strategy",
+    "title": "Skill Gap Analysis",
+    "section": "",
+    "text": "For career preparation, the main priority should be strengthening Python, SQL, machine learning, and cloud skills. Tableau and Power BI should also remain important because AI-related roles still need clear business reporting and visualization.\nA practical next step is to build small portfolio projects that combine job market data, machine learning, and dashboard reporting. This connects directly to the type of work shown in our project."
+  },
+  {
     "objectID": "eda.html",
     "href": "eda.html",
     "title": "Exploratory Data Analysis",
