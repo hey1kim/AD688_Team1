@@ -38,3 +38,11 @@ My stronger areas are communication, data analysis, SQL, Python, and data visual
 For career preparation, the main priority should be strengthening Python, SQL, machine learning, and cloud skills. Tableau and Power BI should also remain important because AI-related roles still need clear business reporting and visualization.
 
 A practical next step is to build small portfolio projects that combine job market data, machine learning, and dashboard reporting. This connects directly to the type of work shown in our project.
+## Next Steps
+
+| Area | Current Gap | Action |
+|---|---|---|
+| Machine Learning | Limited confidence with model building and interpretation | Practice classification, regression, and clustering projects |
+| Cloud Tools | AWS and Azure skills are still developing | Continue AWS labs and learn basic cloud deployment |
+| Visualization | Basic dashboard skills are developing | Build more Tableau or Power BI dashboards using job market data |
+| Communication | Stronger area | Use this strength to explain technical results clearly to business audiences |
