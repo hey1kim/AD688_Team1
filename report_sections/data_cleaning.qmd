@@ -1,0 +1,161 @@
+## Data Cleaning and Preprocessing Overview
+
+This section explains how the Lightcast 2024 job postings dataset was cleaned and prepared for analysis. The goal of the data preparation process was to remove unnecessary or redundant fields, handle missing values, standardize important variables, and create a cleaner dataset that could be used for exploratory analysis, skill gap analysis, and predictive modeling.
+
+Because the original dataset contains many detailed classification fields, several redundant NAICS and SOC code columns were reviewed and simplified. These fields represent different levels of the same industry and occupational classification systems. Keeping every version would make the dataset more complex without adding much value to the analysis. Therefore, the cleaned dataset keeps the most useful classification fields while removing unnecessary duplicates.
+
+The cleaning process also included reviewing missing values, removing duplicate job postings, correcting placeholder values, and preparing variables needed for later analysis. These steps helped make the dataset more reliable for comparing AI-related and non-AI careers across industries, occupations, skills, education requirements, and experience levels.
+
+```{python}
+import pandas as pd
+
+df = pd.read_csv("/home/ubuntu/vonwald.github.io/data/lightcast_job_postings.csv")
+
+print(df.shape)
+print(df.columns.tolist())
+```
+
+```{python}
+columns_to_drop = [
+    "LAST_UPDATED_DATE",
+    "LAST_UPDATED_TIMESTAMP",
+    "DUPLICATES",
+    "SOURCE_TYPES",
+    "SOURCES",
+    "URL",
+    "ACTIVE_URLS",
+    "ACTIVE_SOURCES_INFO",
+    "BODY",
+    "COMPANY_RAW",
+    "ORIGINAL_PAY_PERIOD",
+    "LOCATION",
+    "CITY",
+    "CITY_NAME",
+    "COUNTY",
+    "COUNTY_NAME",
+    "MSA",
+    "MSA_NAME",
+    "STATE",
+    "STATE_NAME",
+    "COUNTY_OUTGOING",
+    "COUNTY_NAME_OUTGOING",
+    "COUNTY_INCOMING",
+    "COUNTY_NAME_INCOMING",
+    "MSA_OUTGOING",
+    "MSA_NAME_OUTGOING",
+    "MSA_INCOMING",
+    "MSA_NAME_INCOMING",
+    "NAICS3",
+    "NAICS3_NAME",
+    "NAICS4",
+    "NAICS4_NAME",
+    "NAICS5",
+    "NAICS5_NAME",
+    "NAICS6",
+    "NAICS6_NAME",
+    "CIP6",
+    "CIP6_NAME",
+    "CIP4",
+    "CIP4_NAME",
+    "CIP2",
+    "NAICS_2022_2",
+    "NAICS_2022_2_NAME",
+    "NAICS_2022_3",
+    "NAICS_2022_3_NAME",
+    "NAICS_2022_4",
+    "NAICS_2022_4_NAME",
+    "NAICS_2022_5",
+    "NAICS_2022_5_NAME",
+    "NAICS_2022_6",
+    "NAICS_2022_6_NAME"
+]
+```
+
+```{python}
+missing_values = df.isnull().sum()
+
+missing_summary = (
+    missing_values[missing_values > 0]
+    .sort_values(ascending=False)
+)
+
+print(missing_summary.head(30))
+```
+
+```{python}
+missing_percent = (df.isnull().sum() / len(df) * 100)
+
+missing_percent = (
+    missing_percent[missing_percent > 0]
+    .sort_values(ascending=False)
+)
+
+print(missing_percent.head(30))
+```
+
+```{python}
+import missingno as msno
+import matplotlib.pyplot as plt
+
+msno.matrix(df)
+plt.show()
+```
+
+```{python}
+cols_over_50 = [
+    "ACTIVE_SOURCES_INFO",
+    "MAX_YEARS_EXPERIENCE",
+    "MAX_EDULEVELS_NAME",
+    "MAX_EDULEVELS",
+    "LIGHTCAST_SECTORS",
+    "LIGHTCAST_SECTORS_NAME",
+    "SALARY",
+    "SALARY_FROM",
+    "SALARY_TO",
+    "ORIGINAL_PAY_PERIOD"
+]
+```
+
+```{python}
+df = df.drop(columns=cols_over_50)
+
+print(df.shape)
+```
+
+```{python}
+numeric_cols = df.select_dtypes(include=["number"]).columns
+
+for col in numeric_cols:
+    df[col] = df[col].fillna(df[col].median())
+```
+
+```{python}
+categorical_cols = df.select_dtypes(include=["object"]).columns
+
+for col in categorical_cols:
+    df[col] = df[col].fillna("Unknown")
+```
+
+```{python}
+print(df.isnull().sum().sum())
+```
+
+```{python}
+before = len(df)
+
+df = df.drop_duplicates(
+    subset=["TITLE", "COMPANY", "LOCATION", "POSTED"],
+    keep="first"
+)
+
+after = len(df)
+
+print(f"Removed {before - after} duplicates")
+print(df.shape)
+```
+
+```{python}
+df.to_csv("cleaned_lightcast_jobs.csv", index=False)
+
+print("Cleaned dataset saved.")
+```

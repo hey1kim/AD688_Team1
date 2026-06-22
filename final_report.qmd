@@ -1,0 +1,56 @@
+cat > final_report.qmd <<'EOF'
+---
+title: "Evaluating Personal Job Market Prospects in 2024"
+subtitle: "Final Report: AI vs. Non-AI Careers"
+author:
+  - name: Lutong Wen
+    affiliations:
+      - ref: bu
+  - name: Maria Taylor Gonzalez
+    affiliations:
+      - ref: bu
+  - name: Sebastian Schwarz
+    affiliations:
+      - ref: bu
+  - name: Hye Won Kim
+    affiliations:
+      - ref: bu
+affiliations:
+  - id: bu
+    name: Boston University
+    city: Boston
+    state: MA
+date: today
+date-format: long
+bibliography: references.bib
+csl: csl/econometrica.csl
+format:
+  docx: default
+execute:
+  freeze: auto
+---
+
+# Project Overview
+
+{{< include report_sections/introduction.qmd >}}
+
+# Data Preparation
+
+{{< include report_sections/data_cleaning.qmd >}}
+
+# Exploratory Analysis
+
+{{< include report_sections/eda.qmd >}}
+
+# Skill Gap Analysis
+
+{{< include report_sections/skill_gap_analysis.qmd >}}
+
+# Predictive Modeling
+
+{{< include report_sections/ml_methods.qmd >}}
+
+# Career Strategy
+
+{{< include report_sections/career_plan.qmd >}}
+EOF

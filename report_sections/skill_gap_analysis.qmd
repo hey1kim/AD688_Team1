@@ -1,0 +1,44 @@
+# Skill Gap Analysis
+---
+
+This section compares the skills required in AI-related job postings with our current skill profile.
+
+## Market Skill Demand
+
+Based on our Lightcast job posting analysis, the most common skills in AI-related postings include SQL, Python, Data Analysis, Machine Learning, Artificial Intelligence, Data Science, Tableau, Statistics, Communication, AWS, Azure, Business Intelligence, Power BI, Data Visualization, and Data Modeling.
+
+This shows that AI-related careers are not only about AI models. They also require data handling, programming, cloud tools, visualization, and communication.
+
+## Current Skill Profile
+
+| Skill | Lutong |
+|---|---:|
+| Python | 3 |
+| SQL | 3 |
+| Machine Learning | 2 |
+| AI | 2 |
+| Data Analysis | 3 |
+| Data Visualization | 3 |
+| AWS | 1 |
+| Azure | 1 |
+| Communication | 4 |
+
+## Skill Gap Interpretation
+
+The largest gaps are in cloud platforms and machine learning. AWS and Azure appear in AI-related job postings, but my current confidence with these tools is still limited. Machine learning and AI are also important because they directly connect to the project topic.
+
+My stronger areas are communication, data analysis, SQL, Python, and data visualization. These skills provide a foundation for business analytics roles, but I still need more practice with machine learning workflows and cloud-based tools.
+
+## Career Strategy
+
+For career preparation, the main priority should be strengthening Python, SQL, machine learning, and cloud skills. Tableau and Power BI should also remain important because AI-related roles still need clear business reporting and visualization.
+
+A practical next step is to build small portfolio projects that combine job market data, machine learning, and dashboard reporting. This connects directly to the type of work shown in our project.
+## Next Steps
+
+| Area | Current Gap | Action |
+|---|---|---|
+| Machine Learning | Limited confidence with model building and interpretation | Practice classification, regression, and clustering projects |
+| Cloud Tools | AWS and Azure skills are still developing | Continue AWS labs and learn basic cloud deployment |
+| Visualization | Basic dashboard skills are developing | Build more Tableau or Power BI dashboards using job market data |
+| Communication | Stronger area | Use this strength to explain technical results clearly to business audiences |
