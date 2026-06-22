@@ -1,9 +1,9 @@
-Add skill gap analysis page
 ---
 title: "Skill Gap Analysis"
 ---
 
 # Skill Gap Analysis
+---
 
 This section compares the skills required in AI-related job postings with our current skill profile.
 
