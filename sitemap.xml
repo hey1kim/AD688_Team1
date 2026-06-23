@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://hey1kim.github.io/AD688_Team1/ml_methods.html</loc>
-    <lastmod>2026-06-22T18:07:45.734Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hey1kim.github.io/AD688_Team1/about.html</loc>
-    <lastmod>2026-06-22T18:07:45.721Z</lastmod>
+    <loc>https://hey1kim.github.io/AD688_Team1/skill_gap_analysis.html</loc>
+    <lastmod>2026-06-23T13:50:10.332Z</lastmod>
   </url>
   <url>
     <loc>https://hey1kim.github.io/AD688_Team1/introduction.html</loc>
-    <lastmod>2026-06-22T18:07:45.734Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hey1kim.github.io/AD688_Team1/data_cleaning.html</loc>
-    <lastmod>2026-06-22T18:07:45.734Z</lastmod>
+    <lastmod>2026-06-23T13:50:10.331Z</lastmod>
   </url>
   <url>
     <loc>https://hey1kim.github.io/AD688_Team1/eda.html</loc>
-    <lastmod>2026-06-22T18:07:45.734Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hey1kim.github.io/AD688_Team1/skill_gap_analysis.html</loc>
-    <lastmod>2026-06-22T18:07:45.734Z</lastmod>
+    <lastmod>2026-06-23T13:50:10.331Z</lastmod>
   </url>
   <url>
     <loc>https://hey1kim.github.io/AD688_Team1/career_plan.html</loc>
-    <lastmod>2026-06-22T18:07:45.721Z</lastmod>
+    <lastmod>2026-06-23T13:50:10.317Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hey1kim.github.io/AD688_Team1/about.html</loc>
+    <lastmod>2026-06-23T13:50:10.317Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hey1kim.github.io/AD688_Team1/data_cleaning.html</loc>
+    <lastmod>2026-06-23T13:50:10.331Z</lastmod>
   </url>
   <url>
     <loc>https://hey1kim.github.io/AD688_Team1/index.html</loc>
-    <lastmod>2026-06-22T18:07:45.734Z</lastmod>
+    <lastmod>2026-06-23T13:50:10.331Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hey1kim.github.io/AD688_Team1/ml_methods.html</loc>
+    <lastmod>2026-06-23T13:50:10.331Z</lastmod>
   </url>
 </urlset>
