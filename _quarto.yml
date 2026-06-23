@@ -1,6 +1,10 @@
 project:
   type: website
-
+  render:
+    - "*.qmd"
+    - "!final_report.qmd"
+    - "!report_sections/*.qmd"
+    
 website:
   title: "Job Market Analysis 2024"
   navbar:
