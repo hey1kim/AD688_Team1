@@ -1,8 +1,11 @@
 ---
 title: "Skill Gap Analysis"
+subtitle: "Market Skill Demand and Career Readiness"
 ---
 
-This section connects the market skill demand identified in the EDA to the current skill profile. The goal is to identify which skills are already aligned with AI-related job demand and which areas need further development.
+## Overview
+
+This section connects the market skill demand identified in the exploratory analysis to the current skill profile. The goal is to identify which skills are already aligned with AI-related job demand and which areas need further development.
 
 ## Market Skill Demand
 
@@ -14,17 +17,17 @@ These results show that AI-related careers are not only about AI model developme
 
 The table below uses a 1–5 self-assessment scale, where 1 means limited confidence and 5 means strong confidence.
 
-| Skill              | Self-Assessment Score |
-| ------------------ | --------------------: |
-| Python             | 3 |
-| SQL                | 3 |
-| Machine Learning   | 2 |
-| AI                 | 2 |
-| Data Analysis      | 3 |
+| Skill | Self-Assessment Score |
+|---|---:|
+| Python | 3 |
+| SQL | 3 |
+| Machine Learning | 2 |
+| AI | 2 |
+| Data Analysis | 3 |
 | Data Visualization | 3 |
-| AWS                | 1 |
-| Azure              | 1 |
-| Communication      | 4 |
+| AWS | 1 |
+| Azure | 1 |
+| Communication | 4 |
 
 ## Skill Gap Interpretation
 
