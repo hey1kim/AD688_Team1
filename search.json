@@ -2,42 +2,42 @@
   {
     "objectID": "skill_gap_analysis.html",
     "href": "skill_gap_analysis.html",
-    "title": "Job Market Analysis 2024",
+    "title": "Skill Gap Analysis",
     "section": "",
-    "text": "title: “Skill Gap Analysis” subtitle: “Market Skill Demand and Career Readiness” —"
+    "text": "This section connects the market skill demand identified in the exploratory analysis to the current skill profile. The goal is to identify which skills are already aligned with AI-related job demand and which areas need further development."
   },
   {
     "objectID": "skill_gap_analysis.html#overview",
     "href": "skill_gap_analysis.html#overview",
-    "title": "Job Market Analysis 2024",
-    "section": "Overview",
-    "text": "Overview\nThis section connects the market skill demand identified in the exploratory analysis to the current skill profile. The goal is to identify which skills are already aligned with AI-related job demand and which areas need further development."
+    "title": "Skill Gap Analysis",
+    "section": "",
+    "text": "This section connects the market skill demand identified in the exploratory analysis to the current skill profile. The goal is to identify which skills are already aligned with AI-related job demand and which areas need further development."
   },
   {
     "objectID": "skill_gap_analysis.html#market-skill-demand",
     "href": "skill_gap_analysis.html#market-skill-demand",
-    "title": "Job Market Analysis 2024",
+    "title": "Skill Gap Analysis",
     "section": "Market Skill Demand",
     "text": "Market Skill Demand\nBased on our Lightcast job posting analysis, the most common skills in AI-related postings include SQL, Python, Data Analysis, Machine Learning, Artificial Intelligence, Data Science, Tableau, Statistics, Communication, AWS, Azure, Business Intelligence, Power BI, Data Visualization, and Data Modeling.\nThese results show that AI-related careers are not only about AI model development. Many roles also require data handling, programming, cloud tools, visualization, and communication skills."
   },
   {
     "objectID": "skill_gap_analysis.html#current-skill-profile",
     "href": "skill_gap_analysis.html#current-skill-profile",
-    "title": "Job Market Analysis 2024",
+    "title": "Skill Gap Analysis",
     "section": "Current Skill Profile",
     "text": "Current Skill Profile\nThe table below uses a 1-5 self-assessment scale, where 1 means limited confidence and 5 means strong confidence.\n\n\n\nSkill\nSelf-Assessment Score\n\n\n\n\nPython\n3\n\n\nSQL\n3\n\n\nMachine Learning\n2\n\n\nAI\n2\n\n\nData Analysis\n3\n\n\nData Visualization\n3\n\n\nAWS\n1\n\n\nAzure\n1\n\n\nCommunication\n4"
   },
   {
     "objectID": "skill_gap_analysis.html#skill-gap-interpretation",
     "href": "skill_gap_analysis.html#skill-gap-interpretation",
-    "title": "Job Market Analysis 2024",
+    "title": "Skill Gap Analysis",
     "section": "Skill Gap Interpretation",
     "text": "Skill Gap Interpretation\nThe largest gaps are in cloud platforms and machine learning. AWS and Azure appear in AI-related job postings, but the current self-assessment scores for these areas remain low. Machine Learning and AI are also important because they directly connect to the project topic.\nStronger areas include communication, SQL, Python, data analysis, and data visualization. These skills provide a foundation for business analytics roles, especially roles that require turning technical results into clear business insights."
   },
   {
     "objectID": "skill_gap_analysis.html#career-strategy",
     "href": "skill_gap_analysis.html#career-strategy",
-    "title": "Job Market Analysis 2024",
+    "title": "Skill Gap Analysis",
     "section": "Career Strategy",
     "text": "Career Strategy\nFor career preparation, the main priority is strengthening skills in Python, SQL, machine learning, and cloud computing. Tableau and Power BI should also remain important, since AI-related roles still require clear business reporting and visualization.\nA stronger portfolio would combine job market data, machine learning, and dashboard reporting. This connects directly to the type of work shown in our project and helps translate the skill gap analysis into a practical career strategy."
   },
