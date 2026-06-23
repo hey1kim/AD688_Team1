@@ -2,47 +2,38 @@
 title: "Skill Gap Analysis"
 ---
 
-# Skill Gap Analysis
----
-
-This section compares the skills required in AI-related job postings with our current skill profile.
+This section connects the market skill demand identified in the EDA to the current skill profile. The goal is to identify which skills are already aligned with AI-related job demand and which areas need further development.
 
 ## Market Skill Demand
 
 Based on our Lightcast job posting analysis, the most common skills in AI-related postings include SQL, Python, Data Analysis, Machine Learning, Artificial Intelligence, Data Science, Tableau, Statistics, Communication, AWS, Azure, Business Intelligence, Power BI, Data Visualization, and Data Modeling.
 
-This shows that AI-related careers are not only about AI models. They also require data handling, programming, cloud tools, visualization, and communication.
+These results show that AI-related careers are not only about AI model development. Many roles also require data handling, programming, cloud tools, visualization, and communication skills.
 
 ## Current Skill Profile
 
-| Skill | Lutong |
-|---|---:|
-| Python | 3 |
-| SQL | 3 |
-| Machine Learning | 2 |
-| AI | 2 |
-| Data Analysis | 3 |
+The table below uses a 1–5 self-assessment scale, where 1 means limited confidence and 5 means strong confidence.
+
+| Skill              | Self-Assessment Score |
+| ------------------ | --------------------: |
+| Python             | 3 |
+| SQL                | 3 |
+| Machine Learning   | 2 |
+| AI                 | 2 |
+| Data Analysis      | 3 |
 | Data Visualization | 3 |
-| AWS | 1 |
-| Azure | 1 |
-| Communication | 4 |
+| AWS                | 1 |
+| Azure              | 1 |
+| Communication      | 4 |
 
 ## Skill Gap Interpretation
 
-The largest gaps are in cloud platforms and machine learning. AWS and Azure appear in AI-related job postings, but my current confidence with these tools is still limited. Machine learning and AI are also important because they directly connect to the project topic.
+The largest gaps are in cloud platforms and machine learning. AWS and Azure appear in AI-related job postings, but the current self-assessment scores for these areas remain low. Machine Learning and AI are also important because they directly connect to the project topic.
 
-My stronger areas are communication, data analysis, SQL, Python, and data visualization. These skills provide a foundation for business analytics roles, but I still need more practice with machine learning workflows and cloud-based tools.
+Stronger areas include communication, SQL, Python, data analysis, and data visualization. These skills provide a foundation for business analytics roles, especially roles that require turning technical results into clear business insights.
 
 ## Career Strategy
 
-For career preparation, the main priority should be strengthening Python, SQL, machine learning, and cloud skills. Tableau and Power BI should also remain important because AI-related roles still need clear business reporting and visualization.
+For career preparation, the main priority is strengthening skills in Python, SQL, machine learning, and cloud computing. Tableau and Power BI should also remain important, since AI-related roles still require clear business reporting and visualization.
 
-A practical next step is to build small portfolio projects that combine job market data, machine learning, and dashboard reporting. This connects directly to the type of work shown in our project.
-## Next Steps
-
-| Area | Current Gap | Action |
-|---|---|---|
-| Machine Learning | Limited confidence with model building and interpretation | Practice classification, regression, and clustering projects |
-| Cloud Tools | AWS and Azure skills are still developing | Continue AWS labs and learn basic cloud deployment |
-| Visualization | Basic dashboard skills are developing | Build more Tableau or Power BI dashboards using job market data |
-| Communication | Stronger area | Use this strength to explain technical results clearly to business audiences |
+A stronger portfolio would combine job market data, machine learning, and dashboard reporting. This connects directly to the type of work shown in our project and helps translate the skill gap analysis into a practical career strategy.
