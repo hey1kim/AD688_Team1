@@ -1,42 +1,222 @@
 ---
+
 title: "Skill Gap Analysis"
 subtitle: "Market Skill Demand and Career Readiness"
 ---
 
 ## Overview
 
-This section connects the market skill demand identified in the exploratory analysis to the current skill profile. The goal is to identify which skills are already aligned with AI-related job demand and which areas need further development.
+This section compares the skills required in AI-related job postings with the current skill profile of our team. The purpose is not only to list technical skills, but also to connect the skill gaps to our main project questions:
+
+1. How does AI impact job security in different fields?
+2. Which industries are experiencing AI-driven job growth vs. job displacement?
+3. How do AI-powered careers compare to traditional roles such as mechanical engineering, farming, and retail?
+4. Are new job titles emerging due to AI advancements?
+
+The analysis uses the Lightcast job posting findings from our exploratory analysis and a 1-5 team skill scale. No additional outside dataset is added in this section.
+
+## Team Skill Levels
+
+The table below shows the current team skill profile using a 1-5 scale:
+
+* 1 = Beginner
+* 2 = Basic knowledge
+* 3 = Intermediate
+* 4 = Advanced
+* 5 = Expert
+
+```{python}
+#| label: team-skill-dataframe
+#| echo: true
+#| message: false
+#| warning: false
+
+import pandas as pd
+import plotly.express as px
+
+skills_data = {
+    "Team Member": ["Lutong", "Maria", "Sebastian", "Hye Won"],
+    "Python": [3, 4, 3, 3],
+    "SQL": [3, 3, 3, 3],
+    "Machine Learning": [2, 4, 2, 2],
+    "AI": [2, 3, 2, 3],
+    "Data Analysis": [3, 4, 4, 3],
+    "Data Visualization": [3, 4, 3, 3],
+    "AWS": [1, 2, 2, 2],
+    "Azure": [1, 1, 1, 1],
+    "Communication": [4, 4, 4, 5]
+}
+
+df_skills = pd.DataFrame(skills_data).set_index("Team Member")
+df_skills
+```
+
+## Skill Heatmap
+
+The heatmap makes the team skill pattern easier to compare across members. Darker/higher values show stronger skills, while lower values show areas that need more development.
+
+```{python}
+#| label: team-skill-heatmap
+#| echo: true
+#| message: false
+#| warning: false
+
+fig = px.imshow(
+    df_skills,
+    text_auto=True,
+    zmin=1,
+    zmax=5,
+    color_continuous_scale="RdYlGn",
+    title="Team Skill Levels"
+)
+
+fig.update_layout(
+    xaxis_title="Skill",
+    yaxis_title="Team Member",
+    height=500
+)
+
+fig.show()
+```
 
 ## Market Skill Demand
 
 Based on our Lightcast job posting analysis, the most common skills in AI-related postings include SQL, Python, Data Analysis, Machine Learning, Artificial Intelligence, Data Science, Tableau, Statistics, Communication, AWS, Azure, Business Intelligence, Power BI, Data Visualization, and Data Modeling.
 
-These results show that AI-related careers are not only about AI model development. Many roles also require data handling, programming, cloud tools, visualization, and communication skills.
+These results show that AI-related careers are not only about AI model development. Many AI-related roles also require data handling, programming, cloud tools, visualization, and communication skills.
 
-## Current Skill Profile
+To compare team readiness with the market, we converted the major in-demand skills into an industry expectation score from 1 to 5. A higher score means the skill is more important for AI-related career readiness.
 
-The table below uses a 1-5 self-assessment scale, where 1 means limited confidence and 5 means strong confidence.
+```{python}
+#| label: industry-expectations
+#| echo: true
+#| message: false
+#| warning: false
 
-| Skill              | Self-Assessment Score |
-| ------------------ | --------------------: |
-| Python             |                     3 |
-| SQL                |                     3 |
-| Machine Learning   |                     2 |
-| AI                 |                     2 |
-| Data Analysis      |                     3 |
-| Data Visualization |                     3 |
-| AWS                |                     1 |
-| Azure              |                     1 |
-| Communication      |                     4 |
+industry_expectations = pd.DataFrame({
+    "Skill": [
+        "Python",
+        "SQL",
+        "Machine Learning",
+        "AI",
+        "Data Analysis",
+        "Data Visualization",
+        "AWS",
+        "Azure",
+        "Communication"
+    ],
+    "Industry Expectation": [4, 4, 5, 5, 4, 4, 4, 3, 4]
+})
+
+team_average = (
+    df_skills
+    .mean()
+    .round(2)
+    .reset_index()
+)
+
+team_average.columns = ["Skill", "Team Average"]
+
+gap_df = industry_expectations.merge(team_average, on="Skill")
+gap_df["Gap"] = (gap_df["Industry Expectation"] - gap_df["Team Average"]).round(2)
+gap_df = gap_df.sort_values("Gap", ascending=False)
+
+gap_df
+```
+
+## Team Average vs. Industry Requirements
+
+This chart compares the team average skill level with the expected skill level for AI-related roles. The largest gaps show where the team should focus first.
+
+```{python}
+#| label: skill-gap-chart
+#| echo: true
+#| message: false
+#| warning: false
+
+plot_df = gap_df.melt(
+    id_vars="Skill",
+    value_vars=["Team Average", "Industry Expectation"],
+    var_name="Category",
+    value_name="Score"
+)
+
+fig = px.bar(
+    plot_df,
+    x="Skill",
+    y="Score",
+    color="Category",
+    barmode="group",
+    title="Team Average vs. AI-Related Career Requirements",
+    text="Score"
+)
+
+fig.update_layout(
+    yaxis_title="Skill Level / Requirement Score",
+    xaxis_title="Skill",
+    yaxis_range=[0, 5.5],
+    height=500
+)
+
+fig.show()
+```
 
 ## Skill Gap Interpretation
 
-The largest gaps are in cloud platforms and machine learning. AWS and Azure appear in AI-related job postings, but the current self-assessment scores for these areas remain low. Machine Learning and AI are also important because they directly connect to the project topic.
+The largest gaps are in AI, machine learning, and cloud platforms. This matters because AI-related postings increasingly require more than general business knowledge. Candidates are expected to understand technical tools, model-based workflows, and cloud-supported data systems.
 
-Stronger areas include communication, SQL, Python, data analysis, and data visualization. These skills provide a foundation for business analytics roles, especially roles that require turning technical results into clear business insights.
+From a job security perspective, this means that workers in many fields may face pressure if their work is highly routine or easy to automate. However, job seekers can improve their position by adding skills that are harder to replace, such as data analysis, AI literacy, cloud tools, business communication, and the ability to explain technical results.
 
-## Career Strategy
+For industries experiencing AI-driven growth, the skill gap points toward technical and analytics-heavy areas such as information technology, professional services, finance, manufacturing, healthcare, and education. For fields with higher displacement risk, the main issue is not that every job disappears, but that workers need to adapt their skill set as AI changes how tasks are performed.
 
-For career preparation, the main priority is strengthening skills in Python, SQL, machine learning, and cloud computing. Tableau and Power BI should also remain important, since AI-related roles still require clear business reporting and visualization.
+AI-powered careers also differ from traditional roles because they combine domain knowledge with technical tools. For example, a traditional role in farming, retail, or mechanical engineering may still require industry expertise, but AI-powered versions of those jobs increasingly involve data, automation, predictive tools, dashboards, or AI-supported decision-making.
 
-A stronger portfolio would combine job market data, machine learning, and dashboard reporting. This connects directly to the type of work shown in our project and helps translate the skill gap analysis into a practical career strategy.
+Emerging job titles also reflect this shift. Roles such as AI Analyst, Machine Learning Engineer, Data Scientist, MLOps Engineer, Business Intelligence Analyst, and AI Product Analyst show that job seekers need a mix of technical, analytical, and communication skills.
+
+## Improvement Plan
+
+The table below translates the main gaps into a practical improvement plan.
+
+```{python}
+#| label: improvement-plan
+#| echo: true
+#| message: false
+#| warning: false
+
+improvement_plan = pd.DataFrame({
+    "Priority Area": [
+        "AI and Machine Learning",
+        "Cloud Platforms",
+        "Data and Dashboard Reporting",
+        "Industry Translation",
+        "Emerging AI Job Titles"
+    ],
+    "Why It Matters": [
+        "AI-related careers increasingly require model-based thinking and machine learning literacy.",
+        "Cloud tools such as AWS and Azure appear in AI-related job postings and support modern data workflows.",
+        "AI-related roles still require clear reporting, visualization, and business communication.",
+        "Traditional fields are not separate from AI; many roles now require both domain knowledge and technical tools.",
+        "New AI-related job titles show that the job market is changing and candidates need updated skill combinations."
+    ],
+    "Recommended Action": [
+        "Practice classification, regression, clustering, and model interpretation projects.",
+        "Continue AWS labs and learn basic cloud deployment and data storage workflows.",
+        "Build Tableau, Power BI, or Plotly dashboards using job market or business datasets.",
+        "Connect technical findings to specific industries such as healthcare, finance, manufacturing, retail, and farming.",
+        "Track AI Analyst, Machine Learning Engineer, Data Scientist, MLOps, and BI Analyst postings to understand required skills."
+    ]
+})
+
+improvement_plan
+```
+
+## Connection to the Four Research Questions
+
+| Research Question                                                            | Skill Gap Connection                                                                                                                                                                               |
+| ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| How does AI impact job security in different fields?                         | Job security depends on whether workers can add data, AI, cloud, and communication skills to their existing field knowledge.                                                                       |
+| Which industries are experiencing AI-driven job growth vs. job displacement? | AI-related demand is more visible in technical, analytical, financial, healthcare, manufacturing, and service-related industries, while more routine task areas face stronger adaptation pressure. |
+| How do AI-powered careers compare to traditional roles?                      | AI-powered careers require traditional domain knowledge plus technical tools such as Python, SQL, machine learning, dashboards, and cloud platforms.                                               |
+| Are new job titles emerging due to AI advancements?                          | Yes. The growth of titles such as AI Analyst, Machine Learning Engineer, Data Scientist, MLOps Engineer, and AI Product Analyst shows that job seekers need updated skill combinations.            |
+
+Overall, the skill gap analysis shows that our team already has a foundation in data analysis, SQL, visualization, and communication. The main improvement areas are AI, machine learning, and cloud platforms. Strengthening these skills would help connect our current business analytics background to AI-related career opportunities.
