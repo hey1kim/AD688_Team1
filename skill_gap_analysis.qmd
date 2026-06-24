@@ -7,9 +7,9 @@ subtitle: "Market Skill Demand and Career Readiness"
 
 This section connects our AI vs. non-AI career analysis to practical career readiness. Since our project focuses on how AI changes job security, industry demand, traditional career paths, and emerging job titles, the skill gap analysis looks at what job seekers need to strengthen in order to stay competitive.
 
-Instead of treating AI as a separate career category, this section compares our team’s current skill profile with the skills that appeared most often in AI-related Lightcast job postings. The analysis uses the Lightcast findings from our exploratory analysis and a 1-5 team skill scale. No additional outside dataset is added in this section.
+Instead of treating AI as a separate career category, this section compares our current term skill profile with the skills most commonly appearing in AI-related Lightcast job postings. The analysis uses the Lightcast findings from our exploratory analysis and a 1-5 team skill scale. No additional outside dataset added.
 
-Because job postings do not directly measure layoffs or displacement, this section treats displacement as skill adaptation pressure. In other words, the main question is not only which jobs may disappear, but which skills help workers adjust as AI changes work across different fields.
+Since job postings do not directly measure layoffs or displacement, this section treats displacement as skill adaptation pressure. In other words, the main question is not only which jobs may disappear, but which skills help workers adjust as AI changes work across different fields.
 
 ## Team Skill Levels
 
